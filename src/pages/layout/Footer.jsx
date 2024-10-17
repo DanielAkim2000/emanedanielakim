@@ -26,7 +26,7 @@ const Footer = () => {
                         }));
                     }
                 },
-                { threshold: 0.6 }
+                { threshold: 0.7 }
             );
         });
 
@@ -48,7 +48,7 @@ const Footer = () => {
                     <p
                         className={`text-lg text-yellow-500 font-semibold animate__animated ${
                             isVisible.reseaux &&
-                            " animate__fadeInUp animate-delay-fast"
+                            " animate__fadeInUp  animate-delay-fast"
                         }`}
                     >
                         Réseaux sociaux

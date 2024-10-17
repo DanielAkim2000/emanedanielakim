@@ -3,25 +3,91 @@ import DivMaxWidth from "@/components/container/DivMaxWidth";
 import React from "react";
 
 const Contact = () => {
+    const devisRef = React.useRef(null);
+    const questionsRef = React.useRef(null);
+
+    const [reload, setReload] = React.useState(false);
+
+    const [isVisible, setIsVisible] = React.useState({
+        devis: false,
+        questions: false,
+    });
+
+    console.log(isVisible);
+
+    React.useEffect(() => {
+        if (!devisRef || !questionsRef) {
+            setReload(!reload);
+            return;
+        }
+    }, [reload]);
+
+    React.useEffect(() => {
+        let devisCurrent = devisRef?.current;
+        let questionsCurrent = questionsRef?.current;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(
+                (entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible((prev) => ({
+                            ...prev,
+                            [entry.target.id]: true,
+                        }));
+                    }
+                },
+                { threshold: 1 }
+            );
+        });
+
+        if (devisRef.current) observer.observe(devisRef.current);
+        if (questionsRef.current) observer.observe(questionsRef.current);
+
+        return () => {
+            if (devisCurrent) observer.unobserve(devisCurrent);
+            if (questionsCurrent) observer.unobserve(questionsCurrent);
+        };
+    }, [devisRef, questionsRef]);
+
     return (
         <div className="w-full flex flex-col gap-0 ">
             <div className="">
                 <img
                     src={lbvimg}
-                    className="max-h-[24rem] min-w-full object-cover blur-[0.5rem] relative z-[-1]"
+                    className="max-h-[24rem] min-w-full object-cover "
                 />
             </div>
             <div className="w-full bg-slate-900">
                 <DivMaxWidth className="relative">
-                    <div className="w-full p-20 bg-slate-700 -mt-52 max-sm:px-7 max-sm:py-10 max-sm:-mt-32">
+                    <div
+                        className={`w-full p-20 bg-slate-700 -mt-52 max-sm:px-7 max-sm:py-10 max-sm:-mt-32 animate__animated ${
+                            isVisible.devis && "animate__fadeInUp "
+                        }`}
+                        ref={devisRef}
+                        id="devis"
+                    >
                         <div className="mb-10 w-full flex flex-col items-start max-">
-                            <p className="text-lg text-yellow-500 font-semibold">
+                            <p
+                                className={`text-lg text-yellow-500 font-semibold animate__animated ${
+                                    isVisible.devis &&
+                                    "animate__fadeInUp animate-delay-fast"
+                                }`}
+                            >
                                 Obtenir un devis
                             </p>
-                            <h2 className="text-4xl text-white font-serif text-start text-nowrap font-semibold">
+                            <h2
+                                className={`text-4xl text-white font-serif text-start text-nowrap font-semibold animate__animated ${
+                                    isVisible.devis &&
+                                    "animate__fadeInUp animate-delay-medium"
+                                }`}
+                            >
                                 Me contacter
                             </h2>
-                            <p className="text-start mt-7 text-md">
+                            <p
+                                className={`text-start mt-7 text-md animate__animated ${
+                                    isVisible.devis &&
+                                    "animate__fadeInUp animate-delay-slow"
+                                }`}
+                            >
                                 Merci de donner un maximum de détail sur le
                                 projet afin que je puisse évaluer correctement
                                 la charge de travail que représente votre
@@ -29,7 +95,12 @@ const Contact = () => {
                                 premier chiffrage au plus proche du devis final.
                             </p>
                         </div>
-                        <div className="w-full flex flex-row items-center gap-5 max-sm:flex-col">
+                        <div
+                            className={`w-full flex flex-row items-center gap-5 max-sm:flex-col animate__animated ${
+                                isVisible.devis &&
+                                "animate__fadeInUp animate-delay-last"
+                            }`}
+                        >
                             <div className="min-w-[20em] flex flex-col justify-between gap-5 max-sm:min-w-full">
                                 <input
                                     type="text"
@@ -51,10 +122,15 @@ const Contact = () => {
                                 ></textarea>
                             </div>
                         </div>
-                        <div className="w-full flex justify-start mt-9 ">
+                        <div
+                            className={`w-full flex justify-start mt-9 animate__animated ${
+                                isVisible.devis &&
+                                "animate__fadeInUp animate-delay-last"
+                            } `}
+                        >
                             <button
-                                className="text-yellow-500 font-semibold p-4 rounded-lg border-2 border-yellow-500
-                                transition-all duration-500 ease-in-out hover:bg-yellow-500 hover:text-slate-700"
+                                className={`text-yellow-500 font-semibold p-4 rounded-lg border-2 border-yellow-500
+                                transition-all duration-500 ease-in-out hover:bg-yellow-500 hover:text-slate-700`}
                             >
                                 Obtenir un devis
                             </button>
@@ -62,11 +138,25 @@ const Contact = () => {
                     </div>
                     <div className="w-full flex flex-row py-28 justify-start max-sm:flex-col max-sm:py-16">
                         <div className="w-full">
-                            <div className="text-left flex flex-col gap-3 mb-7">
-                                <h1 className="text-lg text-yellow-500 max-md:text-2xl font-semibold">
+                            <div
+                                className="text-left flex flex-col gap-3 mb-7"
+                                ref={questionsRef}
+                                id="questions"
+                            >
+                                <h1
+                                    className={`text-lg text-yellow-500 max-md:text-2xl font-semibold animate__animated ${
+                                        isVisible.questions &&
+                                        "animate__fadeInUp animate-delay-fast"
+                                    }`}
+                                >
                                     FAQ
                                 </h1>
-                                <div className="flex flex-col font-serif justify-center gap-3">
+                                <div
+                                    className={`flex flex-col font-serif justify-center gap-3 animate__animated ${
+                                        isVisible.questions &&
+                                        "animate__fadeInUp animate-delay-medium"
+                                    }`}
+                                >
                                     <h1 className="text-4xl  font-bold text-nowrap">
                                         Les questions
                                     </h1>
@@ -76,8 +166,17 @@ const Contact = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full">
-                            <div className="flex flex-col gap-10">
+                        <div
+                            className="w-full"
+                            ref={questionsRef}
+                            id="questions"
+                        >
+                            <div
+                                className={`flex flex-col gap-10 animate__animated ${
+                                    isVisible.questions &&
+                                    "animate__fadeInUp animate-delay-medium"
+                                }`}
+                            >
                                 <div className="text-left">
                                     <h1 className="mb-3 text-3xl playfair max-sm:text-2xl">
                                         Quels sont vos disponibilités ?

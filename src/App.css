@@ -77,3 +77,7 @@
 .animate-delay-fast {
     animation-delay: 0.25s;
 }
+
+.animate-delay-last {
+    animation-delay: 0.9s;
+}

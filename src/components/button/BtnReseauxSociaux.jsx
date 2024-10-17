@@ -7,6 +7,8 @@ const BtnReseauxSociaux = ({ name, link, img }) => {
         <button
             onMouseOver={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
+            onFocus={() => setIsHover(true)}
+            onBlur={() => setIsHover(false)}
             className="p-5 border-2 border-yellow-500 rounded-lg transition-all w-full h-full duration-500 ease-in-out hover:bg-yellow-500
             "
         >

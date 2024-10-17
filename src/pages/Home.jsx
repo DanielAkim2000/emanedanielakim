@@ -15,9 +15,9 @@ import Carrousel from "@/components/caroussel/Carrousel";
 const Home = () => {
     return (
         <div className="w-full">
-            <DivMaxWidth className="py-5">
+            <DivMaxWidth className="">
                 <div className="flex justify-start gap-[30rem] w-full h-screen max-md:text-center max-md:justify-center">
-                    <div className="self-center text-left max-md:text-center flex flex-col gap-3 top-10 sticky">
+                    <div className="self-center text-left max-md:text-center flex flex-col gap-3 top-10 sticky pb-20">
                         <h1 className="text-4xl text-yellow-500 max-md:text-2xl font-semibold mt-10">
                             Bonjour, je suis
                         </h1>
@@ -33,7 +33,7 @@ const Home = () => {
                             Développeur web full stack
                         </p>
                     </div>
-                    <div className="self-end h-auto max-md:hidden">
+                    <div className="self-end h-auto max-md:hidden pb-1">
                         <img
                             src={Myimg}
                             alt="myimg"

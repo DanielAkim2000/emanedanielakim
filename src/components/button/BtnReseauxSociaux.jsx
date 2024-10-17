@@ -16,7 +16,7 @@ const BtnReseauxSociaux = ({ name, link, img }) => {
                 <div className="text-start flex flex-col gap-2">
                     <p className="text-2xl text-white font-semibold">{name}</p>
                     <h2
-                        className={`text-[11px]  text-yellow-500 font-serif font-semibold text-nowrap
+                        className={`text-[11px] font-serif font-semibold text-nowrap
                             transition duration-500 ease-in-out ${
                                 isHover ? "text-slate-800" : "text-yellow-500"
                             }`}

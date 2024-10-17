@@ -21,12 +21,12 @@ const Header = () => {
     return (
         <header className="absolute w-full py-3">
             <DivMaxWidth className="flex flex-col w-full">
-                <nav className="flex justify-between items-center pb-4 max-sm:justify-center">
+                <nav className="flex justify-between items-center pb-4">
                     <img
                         onClick={goToHome}
                         src={logo}
                         alt="logo"
-                        className="w-20 ml-0 max-sm:hidden cursor-pointer"
+                        className="w-20 ml-0  cursor-pointer"
                     />
                     <ul className="flex">
                         <li className="ml-4">

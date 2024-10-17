@@ -1,6 +1,5 @@
 import reactimg from "@/assets/react.svg";
 import DivMaxWidth from "@/components/container/DivMaxWidth";
-import React from "react";
 import CardProjet from "../components/card/CardProjet";
 
 const Projets = () => {

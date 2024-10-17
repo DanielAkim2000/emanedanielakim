@@ -14,18 +14,18 @@ import Carrousel from "@/components/caroussel/Carrousel";
 
 const Home = () => {
     return (
-        <div className="w-full">
+        <div className="w-full bg-akim">
             <DivMaxWidth className="">
-                <div className="flex justify-start gap-[30rem] w-full h-screen max-md:text-center max-md:justify-center">
-                    <div className="self-center text-left max-md:text-center flex flex-col gap-3 top-10 sticky pb-20">
+                <div className="flex justify-start gap-[30rem] w-full h-screen max-md:text-center max-lg:justify-center">
+                    <div className="self-center text-left max-lg:text-center flex flex-col gap-3 top-10 sticky pb-20">
                         <h1 className="text-4xl text-yellow-500 max-md:text-2xl font-semibold mt-10">
                             Bonjour, je suis
                         </h1>
-                        <div className="flex flex-col md:ml-[-0.5em] font-serif max-md:flex-row max-md:gap-4 justify-center">
-                            <h1 className="text-8xl  font-bold max-md:text-6xl max-sm:text-5xl">
+                        <div className="flex flex-col lg:ml-[-0.5rem] font-serif max-lg:flex-row max-lg:gap-4 justify-center">
+                            <h1 className="text-8xl  font-bold max-md:text-6xl max-sm:text-[2.5rem]">
                                 Emane
                             </h1>
-                            <h1 className="text-8xl  font-bold  max-md:text-6xl max-sm:text-5xl">
+                            <h1 className="text-8xl  font-bold  max-md:text-6xl max-sm:text-[2.5rem]">
                                 Daniel
                             </h1>
                         </div>
@@ -33,7 +33,7 @@ const Home = () => {
                             Développeur web full stack
                         </p>
                     </div>
-                    <div className="self-end h-auto max-md:hidden pb-1">
+                    <div className="self-end h-auto max-lg:hidden pb-1 sticky top-20">
                         <img
                             src={Myimg}
                             alt="myimg"

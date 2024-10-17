@@ -52,10 +52,16 @@
     width: 14rem;
     transition: all 0.5s ease-in-out;
     @media (max-height: 720px) {
-        width: 30vh;
+        width: 25vh;
     }
 
     @media (max-height: 400px) {
         width: 0;
     }
+}
+
+.bg-akim {
+    /* assets */
+    background-image: url("./assets/bg2.jpg");
+    background-size: cover;
 }

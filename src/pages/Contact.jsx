@@ -30,7 +30,7 @@ const Contact = () => {
                             </p>
                         </div>
                         <div className="w-full flex flex-row items-center gap-5 max-sm:flex-col">
-                            <div className="min-w-[20em] flex flex-col justify-between gap-5">
+                            <div className="min-w-[20em] flex flex-col justify-between gap-5 max-sm:min-w-full">
                                 <input
                                     type="text"
                                     className="w-full h-14 p-4 border-2 bg-slate-700 rounded-lg transition-all duration-500 ease-in-out outline-1 focus:outline-none focus:border-yellow-500"
@@ -60,7 +60,7 @@ const Contact = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="w-full flex flex-row py-36 justify-start max-sm:flex-col">
+                    <div className="w-full flex flex-row py-28 justify-start max-sm:flex-col max-sm:py-16">
                         <div className="w-full">
                             <div className="text-left flex flex-col gap-3 mb-7">
                                 <h1 className="text-lg text-yellow-500 max-md:text-2xl font-semibold">

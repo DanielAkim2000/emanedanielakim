@@ -11,7 +11,7 @@ const CardProjet = ({ image, listTechno, name, description }) => {
         <div
             ref={ref}
             className={
-                "min-w-[27em] max-sm:min-w-full rounded-t-xl bg-slate-700 relative mb-5 after:border-yellow-500 after:border-b after:bg-yellow-500 after:absolute after:top-[" +
+                "min-w-[23rem] max-w-[23rem] max-sm:min-w-full rounded-t-xl bg-slate-700 relative mb-2 after:border-yellow-500 after:border-b after:left-0 after:bg-yellow-500 after:absolute after:top-[" +
                 currentRef?.clientHeight +
                 "] after:transition-all after:w-full after:duration-700 after:ease-in-out hover:after:border-b-8 "
             }
@@ -19,11 +19,11 @@ const CardProjet = ({ image, listTechno, name, description }) => {
             <div className="rounded-xl bg-white overflow-hidden">
                 <img
                     src={image}
-                    className="w-96 h-80 m-auto transition-all duration-700 ease-in-out hover:scale-125 hover:opacity-80"
+                    className="w-full h-80 m-auto transition-all duration-700 ease-in-out hover:scale-125 hover:opacity-80"
                     alt="image"
                 />
             </div>
-            <div className="p-10">
+            <div className="p-10 text-start">
                 <p className="text-yellow-500 font-semibold text-sm">
                     {listTechno.reduce((acc, t) => {
                         return acc + ", " + t;

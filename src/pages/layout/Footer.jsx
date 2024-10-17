@@ -32,8 +32,8 @@ const Footer = () => {
                     />
                 </div>
             </DivMaxWidth>
-            <div className="py-5 m-auto bg-slate-700">
-                <p className="text-center text-white text-sm">
+            <div className="m-auto bg-slate-700 py-10">
+                <p className="text-center text-white text-sm text-opacity-45">
                     2024 Daniel Akim Emane. Tous droits réservés.
                 </p>
             </div>

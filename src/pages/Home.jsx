@@ -33,6 +33,8 @@ const Home = () => {
     }, [reload]);
 
     useEffect(() => {
+        let competenceCurrent = competenceRef?.current;
+        let projetsCurrent = projetsRef?.current;
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(
                 (entry) => {
@@ -43,12 +45,17 @@ const Home = () => {
                         }));
                     }
                 },
-                { threshold: 0.5 }
+                { threshold: 0.6 }
             );
         });
 
         if (competenceRef.current) observer.observe(competenceRef.current);
         if (projetsRef.current) observer.observe(projetsRef.current);
+
+        return () => {
+            if (competenceCurrent) observer.unobserve(competenceCurrent);
+            if (projetsCurrent) observer.unobserve(projetsCurrent);
+        };
     }, [competenceRef, projetsRef]);
 
     return (
@@ -81,33 +88,29 @@ const Home = () => {
                 </div>
             </DivMaxWidth>
             <div className="w-full bg-slate-700">
-                <DivMaxWidth
-                    className="py-28 text-left"
-                    ref={competenceRef}
-                    id="competence"
-                >
-                    <div className="mb-10">
+                <DivMaxWidth className="py-28 text-left">
+                    <div className="mb-10" ref={competenceRef} id="competence">
                         <p
                             className={`text-lg text-yellow-500 font-semibold animate__animated ${
-                                isVisible?.competence &&
-                                "animate__fadeInUp animate-delay-fast"
+                                isVisible.competence &&
+                                " animate__fadeInUp animate-delay-fast"
                             } `}
                         >
                             Mes compétences
                         </p>
                         <h2
-                            className={`text-4xl text-white font-serif font-semibold animate__animated ${
-                                isVisible?.competence &&
-                                "animate__fadeInUp animate-delay-medium"
+                            className={`text-4xl text-white font-serif font-semibold animate__animated  ${
+                                isVisible.competence &&
+                                " animate__fadeInUp animate-delay-medium"
                             }`}
                         >
                             Services
                         </h2>
                     </div>
                     <div
-                        className={`flex flex-row justify-between gap-10 max-sm:flex-col ${
+                        className={`flex flex-row justify-between gap-10 max-sm:flex-col animate__animated ${
                             isVisible.competence &&
-                            "animate__fadeInUp animate-delay-slow"
+                            " animate__fadeInUp animate-delay-slow"
                         }`}
                     >
                         <CardCompétences
@@ -141,45 +144,59 @@ const Home = () => {
                 </DivMaxWidth>
             </div>
             <div className="w-full">
-                <DivMaxWidth
-                    className="py-28 text-left "
-                    ref={projetsRef}
-                    id="projets"
-                >
-                    <div className="mb-10">
-                        <p className="text-lg text-yellow-500 font-semibold">
+                <DivMaxWidth className="py-28 text-left ">
+                    <div className="mb-10" ref={projetsRef} id="projets">
+                        <p
+                            className={`text-lg text-yellow-500 font-semibold animate__animated ${
+                                isVisible.projets &&
+                                "animate__fadeInUp animate-delay-fast"
+                            }`}
+                        >
                             Mes differents
                         </p>
-                        <h2 className="text-4xl text-white font-serif font-semibold">
+                        <h2
+                            className={`text-4xl text-white font-serif font-semibold animate__animated ${
+                                isVisible.projets &&
+                                "animate__fadeInUp animate-delay-medium"
+                            }`}
+                        >
                             Projets
                         </h2>
                     </div>
-                    <Carrousel>
-                        <CardProjet
-                            name="Projet 1"
-                            description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
-                            listTechno={["React", "Tailwind", "Next"]}
-                            image={reactimg}
-                        />
-                        <CardProjet
-                            name="Projet 1"
-                            description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
-                            listTechno={["React", "Tailwind", "Next"]}
-                            image={reactimg}
-                        />
-                        <CardProjet
-                            name="Projet 1"
-                            description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
-                            listTechno={["React", "Tailwind", "Next"]}
-                            image={reactimg}
-                        />
-                        <CardProjet
-                            name="Projet 1"
-                            description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
-                            listTechno={["React", "Tailwind", "Next"]}
-                            image={reactimg}
-                        />
-                    </Carrousel>
+                    <div
+                        className={`animate__animated ${
+                            isVisible.projets &&
+                            "animate__fadeInUp animate-delay-slow"
+                        }`}
+                    >
+                        <Carrousel>
+                            <CardProjet
+                                name="Projet 1"
+                                description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
+                                listTechno={["React", "Tailwind", "Next"]}
+                                image={reactimg}
+                            />
+                            <CardProjet
+                                name="Projet 1"
+                                description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
+                                listTechno={["React", "Tailwind", "Next"]}
+                                image={reactimg}
+                            />
+                            <CardProjet
+                                name="Projet 1"
+                                description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
+                                listTechno={["React", "Tailwind", "Next"]}
+                                image={reactimg}
+                            />
+                            <CardProjet
+                                name="Projet 1"
+                                description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
+                                listTechno={["React", "Tailwind", "Next"]}
+                                image={reactimg}
+                            />
+                        </Carrousel>
+                    </div>
+
                     <div className="flex flex-row flex-nowrap"></div>
                 </DivMaxWidth>
             </div>

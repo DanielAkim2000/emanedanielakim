@@ -143,7 +143,7 @@ const Carrousel = ({ children }) => {
     }, [currentScrollBar, reload]);
 
     return (
-        <div>
+        <>
             <div
                 ref={ScrollBar}
                 onScroll={handleScroll}
@@ -179,7 +179,7 @@ const Carrousel = ({ children }) => {
                     ></div>
                 </button>
             </div>
-        </div>
+        </>
     );
 };
 

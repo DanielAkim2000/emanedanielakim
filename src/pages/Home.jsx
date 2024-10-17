@@ -11,25 +11,63 @@ import reactimg from "@/assets/react.svg";
 import tailwindimg from "@/assets/tailwind.svg";
 import CardProjet from "@/components/card/CardProjet";
 import Carrousel from "@/components/caroussel/Carrousel";
+import { useEffect } from "react";
 
 const Home = () => {
+    const competenceRef = React.useRef(null);
+    const projetsRef = React.useRef(null);
+
+    const [reload, setReload] = React.useState(false);
+
+    const [isVisible, setIsVisible] = React.useState({
+        competence: false,
+        projets: false,
+    });
+
+    console.log(isVisible);
+
+    useEffect(() => {
+        if (!competenceRef || !projetsRef) {
+            setReload(!reload);
+        }
+    }, [reload]);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(
+                (entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible((prev) => ({
+                            ...prev,
+                            [entry.target.id]: true,
+                        }));
+                    }
+                },
+                { threshold: 0.5 }
+            );
+        });
+
+        if (competenceRef.current) observer.observe(competenceRef.current);
+        if (projetsRef.current) observer.observe(projetsRef.current);
+    }, [competenceRef, projetsRef]);
+
     return (
         <div className="w-full bg-akim">
             <DivMaxWidth className="">
                 <div className="flex justify-start gap-[30rem] w-full h-screen max-md:text-center max-lg:justify-center">
                     <div className="self-center text-left max-lg:text-center flex flex-col gap-3 top-10 sticky pb-20">
-                        <h1 className="text-4xl text-yellow-500 max-md:text-2xl font-semibold mt-10">
+                        <h1 className="text-4xl text-yellow-500 max-md:text-2xl font-semibold mt-10 animate__animated animate__fadeInUp animate-delay-fast">
                             Bonjour, je suis
                         </h1>
                         <div className="flex flex-col lg:ml-[-0.5rem] font-serif max-lg:flex-row max-lg:gap-4 justify-center">
-                            <h1 className="text-8xl  font-bold max-md:text-6xl max-sm:text-[2.5rem]">
+                            <h1 className="text-8xl  font-bold max-md:text-6xl max-sm:text-[2.5rem] animate__animated animate__fadeInUp animate-delay-medium">
                                 Emane
                             </h1>
-                            <h1 className="text-8xl  font-bold  max-md:text-6xl max-sm:text-[2.5rem]">
+                            <h1 className="text-8xl  font-bold  max-md:text-6xl max-sm:text-[2.5rem] animate__animated  animate__fadeInUp animate-delay-medium">
                                 Daniel
                             </h1>
                         </div>
-                        <p className="text-2xl text-nowrap">
+                        <p className="text-2xl text-nowrap animate__animated animate__fadeInUp animate-delay-slow">
                             Développeur web full stack
                         </p>
                     </div>
@@ -37,22 +75,41 @@ const Home = () => {
                         <img
                             src={Myimg}
                             alt="myimg"
-                            className="object-fill img-akim"
+                            className="object-fill img-akim animate__animated animate__fadeInUp animate-delay-medium"
                         />
                     </div>
                 </div>
             </DivMaxWidth>
             <div className="w-full bg-slate-700">
-                <DivMaxWidth className="py-28 text-left ">
+                <DivMaxWidth
+                    className="py-28 text-left"
+                    ref={competenceRef}
+                    id="competence"
+                >
                     <div className="mb-10">
-                        <p className="text-lg text-yellow-500 font-semibold">
+                        <p
+                            className={`text-lg text-yellow-500 font-semibold animate__animated ${
+                                isVisible?.competence &&
+                                "animate__fadeInUp animate-delay-fast"
+                            } `}
+                        >
                             Mes compétences
                         </p>
-                        <h2 className="text-4xl text-white font-serif font-semibold">
+                        <h2
+                            className={`text-4xl text-white font-serif font-semibold animate__animated ${
+                                isVisible?.competence &&
+                                "animate__fadeInUp animate-delay-medium"
+                            }`}
+                        >
                             Services
                         </h2>
                     </div>
-                    <div className="flex flex-row justify-between gap-10 max-sm:flex-col">
+                    <div
+                        className={`flex flex-row justify-between gap-10 max-sm:flex-col ${
+                            isVisible.competence &&
+                            "animate__fadeInUp animate-delay-slow"
+                        }`}
+                    >
                         <CardCompétences
                             images={{
                                 image1: reactimg,
@@ -84,7 +141,11 @@ const Home = () => {
                 </DivMaxWidth>
             </div>
             <div className="w-full">
-                <DivMaxWidth className="py-28 text-left ">
+                <DivMaxWidth
+                    className="py-28 text-left "
+                    ref={projetsRef}
+                    id="projets"
+                >
                     <div className="mb-10">
                         <p className="text-lg text-yellow-500 font-semibold">
                             Mes differents

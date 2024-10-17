@@ -3,6 +3,7 @@ import Contact from "@/pages/Contact";
 import Home from "@/pages/Home";
 import Layout from "@/pages/layout/Layout";
 import Projets from "@/pages/Projets";
+import "animate.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 function App() {

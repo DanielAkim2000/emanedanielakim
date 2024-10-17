@@ -1,17 +1,27 @@
 import PropTypes from "prop-types";
-import React from "react";
+import { forwardRef } from "react";
 
-const DivMaxWidth = ({ children, className = null }) => {
-    return (
-        <div className={"max-w-[1280px] px-5 m-auto " + " " + className}>
-            {children}
-        </div>
-    );
-};
+const DivMaxWidth = forwardRef(
+    ({ children, className = null, id = null }, ref) => {
+        return (
+            <div
+                id={id}
+                className={"max-w-[1280px] px-5 m-auto " + " " + className}
+                ref={ref}
+            >
+                {children}
+            </div>
+        );
+    }
+);
+
+DivMaxWidth.displayName = "DivMaxWidth";
 
 DivMaxWidth.propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
+    ref: PropTypes.object,
+    id: PropTypes.string,
 };
 
 export default DivMaxWidth;

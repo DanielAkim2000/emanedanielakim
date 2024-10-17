@@ -63,5 +63,17 @@
 .bg-akim {
     /* assets */
     background-image: url("./assets/bg2.jpg");
-    background-size: cover;
+    background-size: fill;
+}
+
+.animate-delay-slow {
+    animation-delay: 0.75s;
+}
+
+.animate-delay-medium {
+    animation-delay: 0.5s;
+}
+
+.animate-delay-fast {
+    animation-delay: 0.25s;
 }

@@ -151,7 +151,7 @@ const Carrousel = ({ children }) => {
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseLeave}
-                className={`gap-10 flex-nowrap hide-scrollbar justify-start flex h-auto overflow-hidden`}
+                className={`gap-10 flex-nowrap hide-scrollbar justify-start flex  overflow-hidden max-w-full max-sm:w-full`}
             >
                 {children}
             </div>

@@ -1,0 +1,61 @@
+#root {
+    /* max-width: 1280px; */
+    margin: auto;
+    padding: 0;
+    text-align: center;
+    width: 100vw;
+}
+
+::selection {
+    background-color: rgba(
+        255,
+        165,
+        0,
+        0.5
+    ); /* Couleur de fond pour la sélection */
+    color: white; /* Couleur du texte lors de la sélection */
+}
+
+/* Styles spécifiques pour Firefox */
+::-moz-selection {
+    background-color: rgba(
+        255,
+        165,
+        0,
+        0.5
+    ); /* Couleur de fond pour la sélection */
+    color: white; /* Couleur du texte lors de la sélection */
+}
+
+.playfair {
+    font-family: "Playfair", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Masquer la barre de défilement pour Firefox */
+.hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.img-akim {
+    width: 14rem;
+    transition: all 0.5s ease-in-out;
+    @media (max-height: 720px) {
+        width: 30vh;
+    }
+
+    @media (max-height: 400px) {
+        width: 0;
+    }
+}

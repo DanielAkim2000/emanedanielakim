@@ -26,7 +26,7 @@ const Header = () => {
                         onClick={goToHome}
                         src={logo}
                         alt="logo"
-                        className="w-20 ml-0  cursor-pointer"
+                        className="w-16 ml-0  cursor-pointer transition-all duration-500 ease-in-out hover:scale-125"
                     />
                     <ul className="flex">
                         <li className="ml-4">
@@ -50,7 +50,7 @@ const Header = () => {
                         <li className="ml-4">
                             <button
                                 onClick={goToContact}
-                                className="border-2 px-5 py-3 rounded-lg uppercase font-semibold  text-sm border-yellow-500 transition-all duration-500 ease-in-out  hover:bg-yellow-500 hover:text-[#213547]"
+                                className="border-2 px-5 text-nowrap py-3 rounded-lg uppercase font-semibold  text-sm border-yellow-500 transition-all duration-500 ease-in-out  hover:bg-yellow-500 hover:text-[#213547]"
                             >
                                 me contacter
                             </button>

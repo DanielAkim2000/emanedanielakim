@@ -1,11 +1,18 @@
 import lbvimg from "@/assets/lbv.webp";
 import DivMaxWidth from "@/components/container/DivMaxWidth";
 import React from "react";
+import loadingimg from "../assets/loading.svg";
+import successimg from "../assets/success.svg";
 import { sendEmail } from "../utils/email";
 import { validate } from "../utils/validateForm";
 
 const Contact = () => {
     const devisRef = React.useRef(null);
+    const [submitInfo, setSubmitInfo] = React.useState({
+        isLoading: false,
+        success: false,
+        error: false,
+    });
     const questionsRef = React.useRef(null);
     const [isValid, setIsValid] = React.useState(false);
     const [reload, setReload] = React.useState(false);
@@ -58,17 +65,41 @@ const Contact = () => {
 
     const handleClick = async () => {
         if (!isValid) return;
+        setSubmitInfo({
+            isLoading: true,
+            success: false,
+        });
         try {
             let result = await sendEmail(formData);
-            console.log(result);
+            if (result?.status === 200) {
+                setSubmitInfo({
+                    isLoading: false,
+                    success: true,
+                    error: false,
+                });
+            }
         } catch (error) {
-            console.log(error);
-        } finally {
-            setFormData({
-                name: "",
-                email: "",
-                message: "",
+            setSubmitInfo({
+                isLoading: false,
+                success: false,
+                error: true,
             });
+        } finally {
+            if (submitInfo.success) {
+                setFormData({
+                    name: "",
+                    email: "",
+                    message: "",
+                });
+            }
+
+            setTimeout(() => {
+                setSubmitInfo({
+                    isLoading: false,
+                    success: false,
+                    error: false,
+                });
+            }, 2000);
         }
     };
 
@@ -110,8 +141,48 @@ const Contact = () => {
     if (!lbvimg) return null;
 
     return (
-        <div className="w-full flex flex-col gap-0 ">
-            <div className="w-full min-h-[24rem] max-h-[24rem] max-sm:max-h-[12rem] bg-akim"></div>
+        <div className="w-full flex flex-col gap-0">
+            <div className="w-full min-h-[24rem] max-h-[24rem] max-sm:max-h-[12rem] bg-akim">
+                {submitInfo.success && (
+                    <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
+                        <div className="w-full max-w-[15em] bg-slate-700 p-5 rounded-lg flex flex-col items-center gap-5">
+                            <h1 className="text-2xl text-left text-yellow-500 font-semibold">
+                                Message envoyé avec succès
+                            </h1>
+                            <img
+                                src={successimg}
+                                className="max-w-[3em] animate__animated animate__rotateIn animate-delay-fast"
+                                alt="success"
+                            />
+                        </div>
+                    </div>
+                )}
+                {submitInfo.isLoading && (
+                    <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
+                        <div className="w-full max-w-[12em] min-h-[12em] justify-center bg-slate-700 p-5 rounded-lg flex flex-col items-center gap-5">
+                            <img
+                                src={loadingimg}
+                                alt="loading"
+                                className="loading-spin max-w-[3em]"
+                            />
+                        </div>
+                    </div>
+                )}
+                {submitInfo.error && (
+                    <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
+                        <div className="w-full max-w-[12em] min-h-[12em] justify-center bg-slate-700 p-5 rounded-lg flex flex-col items-center gap-5">
+                            <h1 className="text-xl text-left text-red-500 font-semibold">
+                                Erreur lors de l&apos;envoi du message
+                            </h1>
+                            <p className="text-white text-left">
+                                Une erreur s&apos;est produite lors de
+                                l&apos;envoi du message. Veuillez réessayer plus
+                                tard.
+                            </p>
+                        </div>
+                    </div>
+                )}
+            </div>
             <div className="w-full bg-slate-900">
                 <DivMaxWidth>
                     <div

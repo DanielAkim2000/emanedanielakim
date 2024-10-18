@@ -111,9 +111,7 @@ const Contact = () => {
 
     return (
         <div className="w-full flex flex-col gap-0 ">
-            <div className="w-full min-h-[24rem] max-h-[24rem] max-sm:max-h-[12rem]">
-                <img src={lbvimg} alt="lbv" className="object-cover w-full" />
-            </div>
+            <div className="w-full min-h-[24rem] max-h-[24rem] max-sm:max-h-[12rem] bg-akim"></div>
             <div className="w-full bg-slate-900">
                 <DivMaxWidth>
                     <div

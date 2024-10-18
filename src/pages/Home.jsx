@@ -18,6 +18,7 @@ const Home = () => {
     const projetsRef = React.useRef(null);
 
     const [reload, setReload] = React.useState(false);
+    // const [loading, setLoading] = React.useState(true);
 
     const [isVisible, setIsVisible] = React.useState({
         competence: false,
@@ -30,6 +31,13 @@ const Home = () => {
         if (!competenceRef || !projetsRef) {
             setReload(!reload);
         }
+        // setTimeout(() => {
+        //     setLoading(false);
+        // }, 1500);
+
+        // return () => {
+        //     setLoading(true);
+        // };
     }, [reload]);
 
     useEffect(() => {

@@ -95,7 +95,7 @@ const Contact = () => {
                     }
                 });
             },
-            { threshold: 0.5 }
+            { threshold: 0.1 }
         );
 
         if (devisRef.current) observer.observe(devisRef.current);
@@ -111,7 +111,7 @@ const Contact = () => {
 
     return (
         <div className="w-full flex flex-col gap-0 ">
-            <div className="w-full min-h-[24rem]">
+            <div className="w-full min-h-[24rem] max-h-[24rem]">
                 <img
                     src={lbvimg}
                     alt="lbv"
@@ -121,7 +121,10 @@ const Contact = () => {
             <div className="w-full bg-slate-900">
                 <DivMaxWidth>
                     <div
-                        className={`w-full p-20 bg-slate-700 max-sm:-mt-32 sm:-mt-48 max-sm:px-7 max-sm:py-10 `}
+                        className={`p-20 bg-slate-700 max-sm:-mt-32 sm:-mt-56 max-sm:px-7 max-sm:py-10 animate__animated ${
+                            isVisible.devis &&
+                            "w-full animate__fadeInUp animate-delay-fast"
+                        } `}
                         ref={devisRef}
                         id="devis"
                     >
@@ -294,11 +297,7 @@ const Contact = () => {
                                         /jour
                                     </p>
                                 </div>
-                                <div
-                                    className="text-left"
-                                    ref={questionsRef}
-                                    id="questions"
-                                >
+                                <div className="text-left">
                                     <h1 className="mb-3 text-3xl playfair max-sm:text-2xl">
                                         Effectuez-vous des missions en Agence ?
                                     </h1>

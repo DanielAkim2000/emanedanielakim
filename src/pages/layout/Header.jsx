@@ -28,7 +28,7 @@ const Header = () => {
                         alt="logo"
                         className="w-16 ml-0  cursor-pointer transition-all duration-500 ease-in-out hover:scale-125"
                     />
-                    <ul className="flex items-center">
+                    <ul className="flex items-center flex-wrap">
                         <li className="ml-4">
                             <button
                                 onClick={goToProjets}

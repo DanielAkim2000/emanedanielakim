@@ -27,7 +27,7 @@ const Footer = () => {
                         }));
                     }
                 },
-                { threshold: 0.7 }
+                { threshold: 0.6 }
             );
         });
 
@@ -36,7 +36,7 @@ const Footer = () => {
         return () => {
             if (reseauxCurrent) observer.unobserve(reseauxCurrent);
         };
-    }, [reseauxRef]);
+    }, []);
 
     return (
         <footer className="w-full bg-slate-800">

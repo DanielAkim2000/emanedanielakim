@@ -73,7 +73,7 @@ const Contact = () => {
     };
 
     // console.log(isVisible);
-    console.log(errors);
+    // console.log(errors);
 
     React.useEffect(() => {
         if (!devisRef || !questionsRef) {
@@ -84,19 +84,19 @@ const Contact = () => {
     React.useEffect(() => {
         let devisCurrent = devisRef?.current;
         let questionsCurrent = questionsRef?.current;
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(
-                (entry) => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         setIsVisible((prevState) => ({
                             ...prevState,
                             [entry.target.id]: true,
                         }));
                     }
-                },
-                { threshold: 0.5 }
-            );
-        });
+                });
+            },
+            { threshold: 0.5 }
+        );
 
         if (devisRef.current) observer.observe(devisRef.current);
         if (questionsRef.current) observer.observe(questionsRef.current);
@@ -107,27 +107,25 @@ const Contact = () => {
         };
     }, []);
 
+    if (!lbvimg) return null;
+
     return (
         <div className="w-full flex flex-col gap-0 ">
-            <div className="">
+            <div className="w-full min-h-[24rem]">
                 <img
                     src={lbvimg}
                     alt="lbv"
-                    className="max-h-[24rem] min-w-full object-cover "
+                    className="max-h-[24rem] object-cover w-full"
                 />
             </div>
             <div className="w-full bg-slate-900">
-                <DivMaxWidth className="relative">
+                <DivMaxWidth>
                     <div
-                        className={`w-full p-20 ${
-                            !isVisible && "hidden"
-                        } bg-slate-700 max-sm:-mt-32 -mt-52 max-sm:px-7 max-sm:py-10 animate__animated ${
-                            isVisible.devis && "animate__fadeInUp  "
-                        }`}
+                        className={`w-full p-20 bg-slate-700 max-sm:-mt-32 sm:-mt-48 max-sm:px-7 max-sm:py-10 `}
                         ref={devisRef}
                         id="devis"
                     >
-                        <div className="mb-10 w-full flex flex-col items-start max-">
+                        <div className="mb-10 w-full flex flex-col items-start ">
                             <p
                                 className={`text-lg text-yellow-500 font-semibold animate__animated ${
                                     isVisible.devis &&
@@ -239,11 +237,7 @@ const Contact = () => {
                     </div>
                     <div className="w-full flex flex-row py-28 justify-start max-sm:flex-col max-sm:py-16">
                         <div className="w-full">
-                            <div
-                                className="text-left flex flex-col gap-3 mb-7"
-                                ref={questionsRef}
-                                id="questions"
-                            >
+                            <div className="text-left flex flex-col gap-3 mb-7">
                                 <h1
                                     className={`text-lg text-yellow-500 max-md:text-2xl font-semibold animate__animated ${
                                         isVisible.questions &&
@@ -300,7 +294,11 @@ const Contact = () => {
                                         /jour
                                     </p>
                                 </div>
-                                <div className="text-left">
+                                <div
+                                    className="text-left"
+                                    ref={questionsRef}
+                                    id="questions"
+                                >
                                     <h1 className="mb-3 text-3xl playfair max-sm:text-2xl">
                                         Effectuez-vous des missions en Agence ?
                                     </h1>

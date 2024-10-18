@@ -2,7 +2,7 @@ import flecheimg from "@/assets/fleche.svg";
 import PropTypes from "prop-types";
 import React from "react";
 
-const CardProjet = ({ image, listTechno, name, description }) => {
+const CardProjet = ({ image, listTechno, title, description }) => {
     const [isHover, setIsHover] = React.useState(false);
     const ref = React.useRef(null);
     const currentRef = ref.current;
@@ -19,34 +19,36 @@ const CardProjet = ({ image, listTechno, name, description }) => {
             <div className="rounded-xl bg-white overflow-hidden">
                 <img
                     src={image}
-                    className="w-full h-56 object-cover m-auto transition-all duration-700 ease-in-out hover:scale-125 hover:opacity-80"
+                    className="w-full h-64 object-contain m-auto transition-all duration-700 ease-in-out hover:scale-125 hover:opacity-80"
                     alt="image4"
                 />
             </div>
-            <div className="p-10 text-start min-h-[18em] max-h-[18em]">
+            <div className="p-7 text-start min-h-[22em] max-h-[22em] flex flex-col">
                 <p className="text-yellow-500 font-semibold text-sm">
                     {listTechno.reduce((acc, t) => {
                         return acc + ", " + t;
                     })}
                 </p>
-                <h1 className="font-serif font-semibold text-xl mb-5">
-                    {name}
+                <h1 className="font-serif font-semibold text-xl mt-3 mb-5 transition duration-500 ease-in-out hover:text-yellow-500">
+                    {title}
                 </h1>
-                <p className="text-md">{description}</p>
+                <p className="text-md font-normal">{description}</p>
                 <button
                     onMouseOver={() => setIsHover(true)}
                     onFocus={() => setIsHover(true)}
                     onMouseLeave={() => setIsHover(false)}
                     className={`bg-slate-700 font-semibold border-2 text-yellow-500
                         justify-between
+                        mt-auto
+                        mb-5
                      border-yellow-500 rounded-lg w-40 h-12 
-                     p-3 mt-5 transition-all duration-700 
+                     p-3 transition-all duration-700 
                      ease-in-out hover:bg-yellow-500 hover:w-44
                      text-nowrap relative
                     hover:text-slate-700 inline-flex items-center flex-nowrap 
                `}
                 >
-                    En savoir plus
+                    En savoir plus{" "}
                     <img
                         src={flecheimg}
                         className={

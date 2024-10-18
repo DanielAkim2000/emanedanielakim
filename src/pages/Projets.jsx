@@ -1,8 +1,12 @@
 import betkit3 from "@/assets/betkit2.png";
-import reactimg from "@/assets/react.svg";
 import CardProjet from "@/components/card/CardProjet";
 import DivMaxWidth from "@/components/container/DivMaxWidth";
 import React, { useEffect } from "react";
+import bewvedimg from "../assets/bewved.png";
+import famasApp from "../assets/famasApp.jpg";
+import garageparrotimg from "../assets/garageparrot.png";
+import jeuxdeimg from "../assets/jeuxde.png";
+import kgbimg from "../assets/kgb.png";
 
 const Projets = () => {
     const projetRef = React.useRef(null);
@@ -81,46 +85,40 @@ const Projets = () => {
                             listTechno={["React", "Tailwind"]}
                         />
                         <CardProjet
-                            title="Projet 1"
-                            image={reactimg}
-                            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nulla ac nunc ultricies lacinia. Nullam nec nulla ac nunc
-                            ultricies lacinia."
-                            listTechno={["React", "Tailwind", "Next"]}
+                            title="Bewved"
+                            image={bewvedimg}
+                            description="Bewved est un site pour des formateurs qui listerons leurs formations et les apprenants pourrons s'inscrire à ces formations."
+                            listTechno={[
+                                "React",
+                                "Symfony",
+                                "MySQL",
+                                "Bootstrap",
+                            ]}
                         />
                         <CardProjet
-                            title="Projet 1"
-                            image={reactimg}
-                            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nulla ac nunc ultricies lacinia. Nullam nec nulla ac nunc
-                            ultricies lacinia."
-                            listTechno={["React", "Tailwind", "Next"]}
+                            title="Garage V Parrot"
+                            image={garageparrotimg}
+                            description="C'est un site vitrine pour un garage automobile, il permet de présenter les services et les produits du garage."
+                            listTechno={["React", "Symfony", "PostegreSQL"]}
                         />
                         <CardProjet
-                            title="Projet 1"
-                            image={reactimg}
-                            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nulla ac nunc ultricies lacinia. Nullam nec nulla ac nunc
-                            ultricies lacinia."
-                            listTechno={["React", "Tailwind", "Next"]}
+                            title="KGB"
+                            image={kgbimg}
+                            description="KGB est un ecf qui m'à ete donner au cours de ma formation, ce site liste les missions de l'agence KGB.Les administrateurs peuvent ajouter, modifier et supprimer des missions, des agents et des contacts etc."
+                            listTechno={["PHP POO", "MySQL"]}
                         />
                         <CardProjet
-                            title="Projet 1"
-                            image={reactimg}
-                            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nulla ac nunc ultricies lacinia. Nullam nec nulla ac nunc
-                            ultricies lacinia."
-                            listTechno={["React", "Tailwind", "Next"]}
+                            title="Jeux de dé"
+                            image={jeuxdeimg}
+                            description="C'est un jeu de dé qui permet de lancer un dé et de voir le résultat, il se joue a deux sur le même écrans, le premier joueur a atteindre les 100points à gagné la partie."
+                            listTechno={["Javascript"]}
                         />
+
                         <CardProjet
-                            title="Projet 1"
-                            image={reactimg}
-                            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nulla ac nunc ultricies lacinia. Nullam nec nulla ac nunc
-                            ultricies lacinia."
-                            listTechno={["React", "Tailwind", "Next"]}
-                        />
-                        <CardProjet
-                            title="Projet 1"
-                            image={reactimg}
-                            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec nulla ac nunc ultricies lacinia. Nullam nec nulla ac nunc
-                            ultricies lacinia."
-                            listTechno={["React", "Tailwind", "Next"]}
+                            title="FamasApp"
+                            image={famasApp}
+                            description="FamasApp est une application de location de voiture, elle permet de lister les voitures disponibles à la location, les utilisateurs peuvent s'inscrire et réserver une voiture."
+                            listTechno={["ReactNative", "ExpressJs", "MongoDB"]}
                         />
                     </div>
                 </DivMaxWidth>

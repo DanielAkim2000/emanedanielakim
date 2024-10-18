@@ -1,3 +1,9 @@
+import betkit3 from "@/assets/betkit2.png";
+import bewvedimg from "@/assets/bewved.png";
+import famasApp from "@/assets/famasApp.jpg";
+import garageparrotimg from "@/assets/garageparrot.png";
+import jeuxdeimg from "@/assets/jeuxde.png";
+import kgbimg from "@/assets/kgb.png";
 import Myimg from "@/assets/Subject.png";
 import CardCompétences from "@/components/card/CardCompétences";
 import DivMaxWidth from "@/components/container/DivMaxWidth";
@@ -179,28 +185,52 @@ const Home = () => {
                     >
                         <Carrousel>
                             <CardProjet
-                                name="Projet 1"
-                                description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
-                                listTechno={["React", "Tailwind", "Next"]}
-                                image={reactimg}
+                                title="Betkit"
+                                image={betkit3}
+                                description="
+                                Betkit est un outil qui permet de générez les nombres de combinaisons et côtes possibles pour un ensemble de matchs de football , basket-ball, tennis et rugby sélectionnés.
+                            "
+                                listTechno={["React", "Tailwind"]}
                             />
                             <CardProjet
-                                name="Projet 1"
-                                description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
-                                listTechno={["React", "Tailwind", "Next"]}
-                                image={reactimg}
+                                title="Bewved"
+                                image={bewvedimg}
+                                description="Bewved est un site pour des formateurs qui listerons leurs formations et les apprenants pourrons s'inscrire à ces formations."
+                                listTechno={[
+                                    "React",
+                                    "Symfony",
+                                    "MySQL",
+                                    "Bootstrap",
+                                ]}
                             />
                             <CardProjet
-                                name="Projet 1"
-                                description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
-                                listTechno={["React", "Tailwind", "Next"]}
-                                image={reactimg}
+                                title="Garage V Parrot"
+                                image={garageparrotimg}
+                                description="C'est un site vitrine pour un garage automobile, il permet de présenter les services et les produits du garage."
+                                listTechno={["React", "Symfony", "PostegreSQL"]}
                             />
                             <CardProjet
-                                name="Projet 1"
-                                description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
-                                listTechno={["React", "Tailwind", "Next"]}
-                                image={reactimg}
+                                title="KGB"
+                                image={kgbimg}
+                                description="KGB est un ecf qui m'à ete donner au cours de ma formation, ce site liste les missions de l'agence KGB.Les administrateurs peuvent ajouter, modifier et supprimer des missions, des agents et des contacts etc."
+                                listTechno={["PHP POO", "MySQL"]}
+                            />
+                            <CardProjet
+                                title="Jeux de dé"
+                                image={jeuxdeimg}
+                                description="C'est un jeu de dé qui permet de lancer un dé et de voir le résultat, il se joue a deux sur le même écrans, le premier joueur a atteindre les 100points à gagné la partie."
+                                listTechno={["Javascript"]}
+                            />
+
+                            <CardProjet
+                                title="FamasApp"
+                                image={famasApp}
+                                description="FamasApp est une application de location de voiture, elle permet de lister les voitures disponibles à la location, les utilisateurs peuvent s'inscrire et réserver une voiture."
+                                listTechno={[
+                                    "ReactNative",
+                                    "ExpressJs",
+                                    "MongoDB",
+                                ]}
                             />
                         </Carrousel>
                     </div>

@@ -1,4 +1,4 @@
-import betkit3 from "@/assets/projects/betkit/betkit2.png";
+import betkit3 from "@/assets/betkit2.png";
 import reactimg from "@/assets/react.svg";
 import CardProjet from "@/components/card/CardProjet";
 import DivMaxWidth from "@/components/container/DivMaxWidth";

@@ -11,7 +11,7 @@ const CardProjet = ({ image, listTechno, title, description }) => {
         <div
             ref={ref}
             className={
-                "sm:max-w-[23em] md:max-w-[21em] lg:min-w-[23rem] rounded-t-xl bg-slate-700 relative mb-2 after:border-yellow-500 after:border-b after:left-0 after:bg-yellow-500 after:absolute after:top-[" +
+                "max-sm:min-w-[22em] sm:max-w-[23em] md:max-w-[21em] lg:min-w-[23rem] rounded-t-xl bg-slate-700 relative mb-2 after:border-yellow-500 after:border-b after:left-0 after:bg-yellow-500 after:absolute after:top-[" +
                 currentRef?.clientHeight +
                 "] after:transition-all after:w-full after:duration-700 after:ease-in-out hover:after:border-b-8 "
             }
@@ -19,7 +19,7 @@ const CardProjet = ({ image, listTechno, title, description }) => {
             <div className="rounded-xl bg-white overflow-hidden">
                 <img
                     src={image}
-                    className="w-full h-64 object-contain m-auto transition-all duration-700 ease-in-out hover:scale-125 hover:opacity-80"
+                    className="w-full h-60 object-cover m-auto transition-all duration-700 ease-in-out hover:scale-125 hover:opacity-80"
                     alt="image4"
                 />
             </div>

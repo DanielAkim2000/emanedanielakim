@@ -111,7 +111,7 @@ const Contact = () => {
 
     return (
         <div className="w-full flex flex-col gap-0 ">
-            <div className="w-full min-h-[24rem] max-h-[24rem]">
+            <div className="w-full min-h-[24rem] max-h-[24rem] max-sm:max-h-[16rem]">
                 <img
                     src={lbvimg}
                     alt="lbv"

@@ -148,14 +148,14 @@ const Carrousel = ({ children }) => {
 
     const scrollToLeftPas3 = () => {
         currentScrollBar.scroll({
-            left: currentScrollBar.scrollLeft - 270,
+            left: currentScrollBar.scrollLeft - currentScrollBar.clientWidth,
             behavior: "smooth",
         });
     };
 
     const scrollToRightPas3 = () => {
         currentScrollBar.scroll({
-            left: currentScrollBar.scrollLeft + 270,
+            left: currentScrollBar.scrollLeft + currentScrollBar.clientWidth,
             behavior: "smooth",
         });
     };

@@ -121,7 +121,7 @@ const Contact = () => {
             <div className="w-full bg-slate-900">
                 <DivMaxWidth>
                     <div
-                        className={`p-20 bg-slate-700 max-sm:-mt-32 sm:-mt-56 max-sm:px-7 max-sm:py-10 animate__animated ${
+                        className={`p-20 bg-slate-700 max-sm:-mt-44 sm:-mt-56 max-sm:px-7 max-sm:py-10 animate__animated ${
                             isVisible.devis &&
                             "w-full animate__fadeInUp animate-delay-fast"
                         } `}

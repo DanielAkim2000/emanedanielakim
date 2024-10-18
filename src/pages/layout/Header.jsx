@@ -28,7 +28,7 @@ const Header = () => {
                     >
                         <img src={logo} alt="logo" className="w-full h-full" />
                     </button>
-                    <ul className="flex items-center flex-wrap">
+                    <ul className="flex items-center">
                         <li className="ml-4">
                             <button
                                 onClick={goToProjets}

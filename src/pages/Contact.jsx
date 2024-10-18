@@ -1,24 +1,83 @@
 import lbvimg from "@/assets/lbv.webp";
 import DivMaxWidth from "@/components/container/DivMaxWidth";
 import React from "react";
+import { sendEmail } from "../utils/email";
+import { validate } from "../utils/validateForm";
 
 const Contact = () => {
     const devisRef = React.useRef(null);
     const questionsRef = React.useRef(null);
-
+    const [isValid, setIsValid] = React.useState(false);
     const [reload, setReload] = React.useState(false);
+    const [errors, setErrors] = React.useState({
+        name: {
+            message: "",
+            error: false,
+        },
+        email: {
+            message: "",
+            error: false,
+        },
+        message: {
+            message: "",
+            error: false,
+        },
+    });
 
     const [isVisible, setIsVisible] = React.useState({
         devis: false,
         questions: false,
     });
 
-    console.log(isVisible);
+    const [formData, setFormData] = React.useState({
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    console.log(formData);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+
+        // Valider tous les champs à chaque changement
+        setIsValid(
+            validate(
+                {
+                    ...formData,
+                    [name]: value,
+                },
+                setErrors
+            )
+        );
+    };
+
+    const handleClick = async () => {
+        if (!isValid) return;
+        try {
+            let result = await sendEmail(formData);
+            console.log(result);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setFormData({
+                name: "",
+                email: "",
+                message: "",
+            });
+        }
+    };
+
+    // console.log(isVisible);
+    console.log(errors);
 
     React.useEffect(() => {
         if (!devisRef || !questionsRef) {
             setReload(!reload);
-            return;
         }
     }, [reload]);
 
@@ -29,13 +88,13 @@ const Contact = () => {
             entries.forEach(
                 (entry) => {
                     if (entry.isIntersecting) {
-                        setIsVisible((prev) => ({
-                            ...prev,
+                        setIsVisible((prevState) => ({
+                            ...prevState,
                             [entry.target.id]: true,
                         }));
                     }
                 },
-                { threshold: 1 }
+                { threshold: 0.5 }
             );
         });
 
@@ -46,21 +105,24 @@ const Contact = () => {
             if (devisCurrent) observer.unobserve(devisCurrent);
             if (questionsCurrent) observer.unobserve(questionsCurrent);
         };
-    }, [devisRef, questionsRef]);
+    }, []);
 
     return (
         <div className="w-full flex flex-col gap-0 ">
             <div className="">
                 <img
                     src={lbvimg}
+                    alt="lbv"
                     className="max-h-[24rem] min-w-full object-cover "
                 />
             </div>
             <div className="w-full bg-slate-900">
                 <DivMaxWidth className="relative">
                     <div
-                        className={`w-full p-20 bg-slate-700 -mt-52 max-sm:px-7 max-sm:py-10 max-sm:-mt-32 animate__animated ${
-                            isVisible.devis && "animate__fadeInUp "
+                        className={`w-full p-20 ${
+                            !isVisible && "hidden"
+                        } bg-slate-700 max-sm:-mt-32 -mt-52 max-sm:px-7 max-sm:py-10 animate__animated ${
+                            isVisible.devis && "animate__fadeInUp  "
                         }`}
                         ref={devisRef}
                         id="devis"
@@ -104,21 +166,56 @@ const Contact = () => {
                             <div className="min-w-[20em] flex flex-col justify-between gap-5 max-sm:min-w-full">
                                 <input
                                     type="text"
-                                    className="w-full h-14 p-4 border-2 bg-slate-700 rounded-lg transition-all duration-500 ease-in-out outline-1 focus:outline-none focus:border-yellow-500"
+                                    name="name"
+                                    className={`w-full h-14 p-4 border-2 bg-slate-700 rounded-lg transition-all duration-500 ease-in-out outline-1 focus:outline-none 
+                                        ${
+                                            errors.name?.error
+                                                ? "focus:border-red-500"
+                                                : "focus:border-yellow-500 "
+                                        }
+                                        ${
+                                            errors.name?.error &&
+                                            "border-red-500"
+                                        }  `}
                                     placeholder="Nom et Prénom"
+                                    value={formData.name}
+                                    onChange={handleChange}
                                 />
                                 <input
-                                    type="text"
-                                    className="w-full h-14 p-4 border-2 bg-slate-700 rounded-lg transition-all duration-500 ease-in-out focus:outline-none focus:border-yellow-500"
+                                    type="email"
+                                    name="email"
+                                    className={`w-full h-14 p-4 border-2 bg-slate-700 rounded-lg transition-all duration-500 ease-in-out focus:outline-none
+                                                ${
+                                                    errors.email?.error
+                                                        ? "focus:border-red-500"
+                                                        : "focus:border-yellow-500"
+                                                } 
+                                                ${
+                                                    errors.email?.error &&
+                                                    "border-red-500"
+                                                }`}
                                     placeholder="Email"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                 />
                             </div>
                             <div className="w-full flex">
                                 <textarea
                                     name="message"
                                     id="message"
-                                    className="w-full min-h-32 border-2 bg-slate-700 rounded-lg p-4 transition-all duration-500 ease-in-out focus:outline-none focus:border-yellow-500"
+                                    className={`w-full min-h-32 border-2 bg-slate-700 rounded-lg p-4 transition-all duration-500 ease-in-out focus:outline-none 
+                                            ${
+                                                errors.message?.error &&
+                                                "border-red-500"
+                                            } 
+                                            ${
+                                                errors.message?.error
+                                                    ? "focus:border-red-500"
+                                                    : "focus:border-yellow-500"
+                                            } `}
                                     placeholder="Description du projet"
+                                    value={formData.message}
+                                    onChange={handleChange}
                                 ></textarea>
                             </div>
                         </div>
@@ -130,7 +227,11 @@ const Contact = () => {
                         >
                             <button
                                 className={`text-yellow-500 font-semibold p-4 rounded-lg border-2 border-yellow-500
-                                transition-all duration-500 ease-in-out hover:bg-yellow-500 hover:text-slate-700`}
+                                transition-all duration-1000 ease-in-out ${
+                                    isValid && "bg-yellow-500 text-slate-700"
+                                }`}
+                                onClick={handleClick}
+                                disabled={!isValid}
                             >
                                 Obtenir un devis
                             </button>
@@ -195,7 +296,7 @@ const Contact = () => {
                                         pour le mener à bien. À titre indicatif
                                         mon tarif journalier moyen se situe aux
                                         alentour de{" "}
-                                        <b className="text-yellow-500">200€</b>
+                                        <b className="text-yellow-500">200€</b>{" "}
                                         /jour
                                     </p>
                                 </div>

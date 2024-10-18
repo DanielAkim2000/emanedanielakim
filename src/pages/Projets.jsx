@@ -9,7 +9,6 @@ const Projets = () => {
     const [reload, setReload] = React.useState(false);
     const [isVisible, setIsVisible] = React.useState({
         projet: false,
-        card: false,
     });
 
     useEffect(() => {
@@ -25,10 +24,7 @@ const Projets = () => {
             entries.forEach(
                 (entry) => {
                     if (entry.isIntersecting) {
-                        setIsVisible((prev) => ({
-                            ...prev,
-                            [entry.target.id]: true,
-                        }));
+                        setIsVisible({ ...isVisible, projet: true });
                     }
                 },
                 { threshold: 0.6 }
@@ -42,7 +38,7 @@ const Projets = () => {
             if (projetCurrent) observer.unobserve(projetCurrent);
             if (cardsCurrent) observer.unobserve(cardsCurrent);
         };
-    }, [projetRef]);
+    }, []);
 
     return (
         <div className="w-full bg-slate-700">
@@ -70,13 +66,10 @@ const Projets = () => {
                     </h5>
                 </div>
             </DivMaxWidth>
-            <div className="w-full bg-slate-900" ref={cardsRef} id="card">
+            <div className="w-full bg-slate-900">
                 <DivMaxWidth className="py-28">
                     <div
-                        className={`flex flex-row flex-wrap justify-between max-lg:justify-center gap-5 items-center w-full px-5 animate__animated ${
-                            isVisible.card &&
-                            "animate__fadeInUp animate-delay-fast"
-                        }`}
+                        className={`flex flex-row flex-wrap justify-between max-lg:justify-center gap-5 items-center w-full px-5 `}
                     >
                         <CardProjet
                             title="Projet 1"

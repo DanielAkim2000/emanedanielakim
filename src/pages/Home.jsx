@@ -56,7 +56,7 @@ const Home = () => {
             if (competenceCurrent) observer.unobserve(competenceCurrent);
             if (projetsCurrent) observer.unobserve(projetsCurrent);
         };
-    }, [competenceRef, projetsRef]);
+    }, []);
 
     return (
         <div className="w-full bg-akim">

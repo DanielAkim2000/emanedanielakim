@@ -12,6 +12,7 @@ const Footer = () => {
         if (!reseauxRef) {
             setReload(!reload);
         }
+        setIsVisible({ reseaux: false });
     }, [reload]);
 
     useEffect(() => {

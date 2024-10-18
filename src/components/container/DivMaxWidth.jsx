@@ -6,7 +6,7 @@ const DivMaxWidth = forwardRef(
         return (
             <div
                 id={id}
-                className={"max-w-[1280px] px-5 m-auto " + " " + className}
+                className={"max-w-[1200px] px-5 m-auto " + " " + className}
                 ref={ref}
             >
                 {children}

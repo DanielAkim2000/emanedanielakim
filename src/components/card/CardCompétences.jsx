@@ -8,17 +8,17 @@ const CardCompétences = ({ images, title, description }) => {
                 <img
                     src={images.image1}
                     className="max-sm:w-[3.4em] sm:w-[5vw] md:w-[3em]"
-                    alt="image"
+                    alt="image1"
                 />
                 <img
                     src={images.image2}
                     className="max-sm:w-[3.4em] sm:w-[5vw] md:w-[3em]"
-                    alt="image"
+                    alt="image2"
                 />
                 <img
                     src={images.image3}
                     className="max-sm:w-[3.4em] sm:w-[5vw] md:w-[3em]"
-                    alt="image"
+                    alt="image3"
                 />
             </div>
             <div className="text-left">

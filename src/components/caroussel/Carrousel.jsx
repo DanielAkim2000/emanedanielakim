@@ -56,14 +56,18 @@ const Carrousel = ({ children }) => {
                 left: true,
                 right: false,
             });
-        }
-        if (
+        } else if (
             currentScrollBar.scrollLeft + currentScrollBar.clientWidth >=
             currentScrollBar.scrollWidth
         ) {
             setDisabled({
                 left: false,
                 right: true,
+            });
+        } else {
+            setDisabled({
+                left: false,
+                right: false,
             });
         }
     };
@@ -142,9 +146,23 @@ const Carrousel = ({ children }) => {
         }
     }, [currentScrollBar, reload]);
 
+    const scrollToLeftPas3 = () => {
+        currentScrollBar.scroll({
+            left: currentScrollBar.scrollLeft - 300,
+            behavior: "smooth",
+        });
+    };
+
+    const scrollToRightPas3 = () => {
+        currentScrollBar.scroll({
+            left: currentScrollBar.scrollLeft + 300,
+            behavior: "smooth",
+        });
+    };
+
     return (
         <>
-            <div
+            <button
                 ref={ScrollBar}
                 onScroll={handleScroll}
                 onMouseDown={handleMouseDown}
@@ -154,11 +172,12 @@ const Carrousel = ({ children }) => {
                 className={`gap-10 flex-nowrap hide-scrollbar justify-start flex  overflow-hidden max-w-full max-sm:w-full`}
             >
                 {children}
-            </div>
+            </button>
             <div className="flex gap-3 mt-5">
                 <button
                     onClick={scrollToLeft}
                     disabled={currentScrollBar && disabled.left}
+                    className="max-sm:hidden"
                 >
                     <div
                         className={`w-10 h-2  rounded-full ${
@@ -170,6 +189,31 @@ const Carrousel = ({ children }) => {
                 </button>
                 <button
                     onClick={scrollToRight}
+                    className="max-sm:hidden"
+                    disabled={currentScrollBar && disabled.right}
+                >
+                    <div
+                        className={`w-10 h-2  rounded-full ${
+                            disabled.right ? "bg-[#eab2085f]" : "bg-yellow-500"
+                        }`}
+                    ></div>
+                </button>
+                <button
+                    onClick={scrollToLeftPas3}
+                    disabled={currentScrollBar && disabled.left}
+                    className="sm:hidden"
+                >
+                    <div
+                        className={`w-10 h-2  rounded-full ${
+                            disabled.left || scrollInfo.scrollLeft === 0
+                                ? "bg-[#eab2085f]"
+                                : "bg-yellow-500"
+                        }`}
+                    ></div>
+                </button>
+                <button
+                    onClick={scrollToRightPas3}
+                    className="sm:hidden"
                     disabled={currentScrollBar && disabled.right}
                 >
                     <div

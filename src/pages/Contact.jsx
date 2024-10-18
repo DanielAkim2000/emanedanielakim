@@ -111,19 +111,15 @@ const Contact = () => {
 
     return (
         <div className="w-full flex flex-col gap-0 ">
-            <div className="w-full min-h-[24rem] max-h-[24rem] max-sm:max-h-[16rem]">
-                <img
-                    src={lbvimg}
-                    alt="lbv"
-                    className="max-h-[24rem] object-cover w-full"
-                />
+            <div className="w-full min-h-[24rem] max-h-[24rem] max-sm:max-h-[12rem]">
+                <img src={lbvimg} alt="lbv" className="object-cover w-full" />
             </div>
             <div className="w-full bg-slate-900">
                 <DivMaxWidth>
                     <div
-                        className={`p-20 bg-slate-700 max-sm:-mt-44 sm:-mt-56 max-sm:px-7 max-sm:py-10 animate__animated ${
+                        className={`p-28 w-full bg-slate-700 max-sm:-mt-44 sm:-mt-56 max-sm:px-7 max-sm:py-10 animate__animated ${
                             isVisible.devis &&
-                            "w-full animate__fadeInUp animate-delay-fast"
+                            "animate__fadeInUp animate-delay-fast"
                         } `}
                         ref={devisRef}
                         id="devis"
@@ -164,7 +160,7 @@ const Contact = () => {
                                 "animate__fadeInUp animate-delay-last"
                             }`}
                         >
-                            <div className="min-w-[20em] flex flex-col justify-between gap-5 max-sm:min-w-full">
+                            <div className="min-w-[20em] max-lg:min-w-[14em] flex flex-col justify-between gap-5 max-sm:min-w-full">
                                 <input
                                     type="text"
                                     name="name"
@@ -227,9 +223,11 @@ const Contact = () => {
                             } `}
                         >
                             <button
-                                className={`text-yellow-500 font-semibold p-4 rounded-lg border-2 border-yellow-500
+                                className={`font-semibold p-4 rounded-lg border-2 border-yellow-500
                                 transition-all duration-1000 ease-in-out ${
-                                    isValid && "bg-yellow-500 text-slate-700"
+                                    isValid
+                                        ? "bg-yellow-500 text-slate-700"
+                                        : "text-yellow-500"
                                 }`}
                                 onClick={handleClick}
                                 disabled={!isValid}

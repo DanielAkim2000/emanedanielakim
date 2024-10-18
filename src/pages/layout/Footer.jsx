@@ -1,4 +1,6 @@
 import githubimg from "@/assets/github.svg";
+import instagraming from "@/assets/instagram.svg";
+import linkedinimg from "@/assets/linkedin.svg";
 import BtnReseauxSociaux from "@/components/button/BtnReseauxSociaux";
 import DivMaxWidth from "@/components/container/DivMaxWidth";
 import React, { useEffect } from "react";
@@ -64,25 +66,25 @@ const Footer = () => {
                     </h2>
                 </div>
                 <div
-                    className={`w-full justify-between gap-10 flex max-lg:flex-col animate__animated ${
+                    className={`w-full justify-between gap-10 flex max-sm:flex-col animate__animated ${
                         isVisible.reseaux &&
                         "animate__fadeInUp animate-delay-slow"
                     }`}
                 >
                     <BtnReseauxSociaux
                         name="Github"
-                        link="github.com/danielakimemane2000"
+                        link="https://github.com/DanielAkim2000"
                         img={githubimg}
                     />
                     <BtnReseauxSociaux
                         name="Linkedin"
-                        link="linkedin.com/in/daniel-akim-emane"
-                        img={githubimg}
+                        link="https://www.linkedin.com/in/daniel-akim-emane-ab5700286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                        img={linkedinimg}
                     />
                     <BtnReseauxSociaux
-                        name="Twitter"
-                        link="twitter.com/danielakimemane"
-                        img={githubimg}
+                        name="Instagram"
+                        link="https://www.instagram.com/akim_emane"
+                        img={instagraming}
                     />
                 </div>
             </DivMaxWidth>

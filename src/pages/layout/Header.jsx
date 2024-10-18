@@ -22,12 +22,12 @@ const Header = () => {
         <header className="absolute w-full py-3">
             <DivMaxWidth className="flex flex-col w-full">
                 <nav className="flex justify-between items-center pb-4">
-                    <img
+                    <button
                         onClick={goToHome}
-                        src={logo}
-                        alt="logo"
-                        className="w-16 ml-0  cursor-pointer transition-all duration-500 ease-in-out hover:scale-125"
-                    />
+                        className="w-16 ml-0 cursor-pointer transition-all duration-500 ease-in-out hover:scale-125"
+                    >
+                        <img src={logo} alt="logo" className="w-full h-full" />
+                    </button>
                     <ul className="flex items-center flex-wrap">
                         <li className="ml-4">
                             <button

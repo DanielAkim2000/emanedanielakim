@@ -10,7 +10,7 @@ const Contact = () => {
     const devisRef = React.useRef(null);
     const [submitInfo, setSubmitInfo] = React.useState({
         isLoading: false,
-        success: false,
+        success: true,
         error: false,
     });
     const questionsRef = React.useRef(null);
@@ -85,13 +85,17 @@ const Contact = () => {
                 error: true,
             });
         } finally {
-            if (submitInfo.success) {
-                setFormData({
-                    name: "",
-                    email: "",
-                    message: "",
-                });
-            }
+            setFormData({
+                name: "",
+                email: "",
+                message: "",
+            });
+
+            setFormData({
+                name: errors.name?.error ? "" : formData.name,
+                email: errors.email?.error ? "" : formData.email,
+                message: errors.message?.error ? "" : formData.message,
+            });
 
             setTimeout(() => {
                 setSubmitInfo({
@@ -142,16 +146,16 @@ const Contact = () => {
 
     return (
         <div className="w-full flex flex-col gap-0">
-            <div className="w-full min-h-[24rem] max-h-[24rem] max-sm:max-h-[12rem] bg-akim">
+            <div className="w-full min-h-[24rem] max-h-[24rem] max-sm:max-h-[12rem] bg-akim transition ">
                 {submitInfo.success && (
                     <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
-                        <div className="w-full max-w-[15em] bg-slate-700 p-5 rounded-lg flex flex-col items-center gap-5">
-                            <h1 className="text-2xl text-left text-yellow-500 font-semibold">
-                                Message envoyé avec succès
+                        <div className="w-full max-w-[12em] min-h-[12em] justify-center bg-slate-900 p-5 rounded-lg flex flex-col items-center gap-5">
+                            <h1 className="text-xl text-left text-yellow-500 font-semibold">
+                                Message envoyé
                             </h1>
                             <img
                                 src={successimg}
-                                className="max-w-[3em] animate__animated animate__rotateIn animate-delay-fast"
+                                className="max-w-[3em] animate__animated animate__bounceIn animate-delay-slow"
                                 alt="success"
                             />
                         </div>
@@ -159,7 +163,7 @@ const Contact = () => {
                 )}
                 {submitInfo.isLoading && (
                     <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
-                        <div className="w-full max-w-[12em] min-h-[12em] justify-center bg-slate-700 p-5 rounded-lg flex flex-col items-center gap-5">
+                        <div className="w-full max-w-[12em] min-h-[12em] justify-center bg-slate-900 p-5 rounded-lg flex flex-col items-center gap-5">
                             <img
                                 src={loadingimg}
                                 alt="loading"
@@ -170,7 +174,7 @@ const Contact = () => {
                 )}
                 {submitInfo.error && (
                     <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
-                        <div className="w-full max-w-[12em] min-h-[12em] justify-center bg-slate-700 p-5 rounded-lg flex flex-col items-center gap-5">
+                        <div className="w-full max-w-[12em] min-h-[12em] justify-center bg-slate-900 p-5 rounded-lg flex flex-col items-center gap-5">
                             <h1 className="text-xl text-left text-red-500 font-semibold">
                                 Erreur lors de l&apos;envoi du message
                             </h1>

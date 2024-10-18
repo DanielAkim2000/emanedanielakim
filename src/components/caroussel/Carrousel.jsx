@@ -58,7 +58,7 @@ const Carrousel = ({ children }) => {
             });
         } else if (
             // 5 car il y a un décalage de 5px pour le scroll
-            currentScrollBar.scrollLeft + currentScrollBar.clientWidth(+5) >=
+            currentScrollBar.scrollLeft + currentScrollBar.clientWidth(+10) >=
             currentScrollBar.scrollWidth
         ) {
             setDisabled({
@@ -151,10 +151,10 @@ const Carrousel = ({ children }) => {
         currentScrollBar.scroll({
             left:
                 currentScrollBar.scrollLeft -
-                    (currentScrollBar.clientWidth + 5) >=
+                    currentScrollBar.clientWidth(+10) >=
                 0
                     ? currentScrollBar.scrollLeft -
-                      (currentScrollBar.clientWidth + 5)
+                      currentScrollBar.clientWidth(+10)
                     : 0,
             behavior: "smooth",
         });

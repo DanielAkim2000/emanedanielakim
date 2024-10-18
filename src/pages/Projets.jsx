@@ -7,6 +7,7 @@ import famasApp from "../assets/famasApp.jpg";
 import garageparrotimg from "../assets/garageparrot.png";
 import jeuxdeimg from "../assets/jeuxde.png";
 import kgbimg from "../assets/kgb.png";
+import pobaluimg from "../assets/pobalu.png";
 
 const Projets = () => {
     const projetRef = React.useRef(null);
@@ -108,12 +109,17 @@ const Projets = () => {
                             listTechno={["PHP POO", "MySQL"]}
                         />
                         <CardProjet
+                            title="Pobalu"
+                            image={pobaluimg}
+                            description="Pobalu est un site vitrine pour l'artiste Pierre Olivier qui lui permet de présenter ses différentes séries de peintures."
+                            listTechno={["Wordpress", "Elementor"]}
+                        />
+                        <CardProjet
                             title="Jeux de dé"
                             image={jeuxdeimg}
                             description="C'est un jeu de dé qui permet de lancer un dé et de voir le résultat, il se joue a deux sur le même écrans, le premier joueur a atteindre les 100points à gagné la partie."
                             listTechno={["Javascript"]}
                         />
-
                         <CardProjet
                             title="FamasApp"
                             image={famasApp}

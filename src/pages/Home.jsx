@@ -1,6 +1,5 @@
 import betkit3 from "@/assets/betkit2.png";
 import bewvedimg from "@/assets/bewved.png";
-import famasApp from "@/assets/famasApp.jpg";
 import garageparrotimg from "@/assets/garageparrot.png";
 import jeuxdeimg from "@/assets/jeuxde.png";
 import kgbimg from "@/assets/kgb.png";
@@ -9,15 +8,17 @@ import CardCompétences from "@/components/card/CardCompétences";
 import DivMaxWidth from "@/components/container/DivMaxWidth";
 import React from "react";
 
+import elementorimg from "@/assets/elementor.svg";
+import expressimg from "@/assets/express.svg";
 import nextimg from "@/assets/next.svg";
+import nodeimg from "@/assets/nodejs.svg";
+import pobaluimg from "@/assets/pobalu.png";
 import reactimg from "@/assets/react.svg";
-// import expressimg from "@/assets/express.svg";
-// import nodeimg from "@/assets/nodejs.svg";
-// import symfonyimg from "@/assets/symfony.svg";
+import symfonyimg from "@/assets/symfony.svg";
 import tailwindimg from "@/assets/tailwind.svg";
+import wordpressimg from "@/assets/wordpress.svg";
 import CardProjet from "@/components/card/CardProjet";
 import Carrousel from "@/components/caroussel/Carrousel";
-import { useEffect } from "react";
 
 const Home = () => {
     const competenceRef = React.useRef(null);
@@ -33,7 +34,7 @@ const Home = () => {
 
     console.log(isVisible);
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (!competenceRef || !projetsRef) {
             setReload(!reload);
         }
@@ -46,7 +47,7 @@ const Home = () => {
         // };
     }, [reload]);
 
-    useEffect(() => {
+    React.useEffect(() => {
         let competenceCurrent = competenceRef?.current;
         let projetsCurrent = projetsRef?.current;
         const observer = new IntersectionObserver((entries) => {
@@ -129,30 +130,29 @@ const Home = () => {
                     >
                         <CardCompétences
                             images={{
-                                image1: reactimg,
-                                image2: tailwindimg,
-                                image3: nextimg,
+                                image1: symfonyimg,
+                                image2: nodeimg,
+                                image3: expressimg,
                             }}
-                            title="Front-end ReactJs et NextJs"
-                            description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
+                            title="Backend ExpressJs ou Symfony"
+                            description="Je crée des API RESTful sécurisées et performantes pour vos applications web."
                         />
                         <CardCompétences
                             images={{
-                                image1: reactimg,
+                                image1: nextimg,
                                 image2: tailwindimg,
-                                image3: nextimg,
+                                image3: reactimg,
                             }}
                             title="Front-end ReactJs et NextJs"
-                            description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
+                            description="Grâce à ReactJs et NextJs, je crée des interfaces utilisateur modernes et réactives."
                         />
                         <CardCompétences
                             images={{
-                                image1: reactimg,
-                                image2: tailwindimg,
-                                image3: nextimg,
+                                image1: wordpressimg,
+                                image2: elementorimg,
                             }}
-                            title="Front-end ReactJs et NextJs"
-                            description="J'utilise les technologies les plus récentes pour créer des applications web modernes."
+                            title="Wordpress et Elementor"
+                            description="Je crée des sites web vitrines et des blogs avec Wordpress et Elementor."
                         />
                     </div>
                 </DivMaxWidth>
@@ -210,27 +210,23 @@ const Home = () => {
                                 listTechno={["React", "Symfony", "PostegreSQL"]}
                             />
                             <CardProjet
+                                title="Pobalu"
+                                image={pobaluimg}
+                                description="Pobalu est un site vitrine pour l'artiste Pierre Olivier qui lui permet de présenter ses différentes séries de peintures."
+                                listTechno={["Wordpress", "Elementor"]}
+                            />
+                            <CardProjet
                                 title="KGB"
                                 image={kgbimg}
                                 description="KGB est un ecf qui m'à ete donner au cours de ma formation, ce site liste les missions de l'agence KGB.Les administrateurs peuvent ajouter, modifier et supprimer des missions, des agents et des contacts etc."
                                 listTechno={["PHP POO", "MySQL"]}
                             />
+
                             <CardProjet
                                 title="Jeux de dé"
                                 image={jeuxdeimg}
                                 description="C'est un jeu de dé qui permet de lancer un dé et de voir le résultat, il se joue a deux sur le même écrans, le premier joueur a atteindre les 100points à gagné la partie."
                                 listTechno={["Javascript"]}
-                            />
-
-                            <CardProjet
-                                title="FamasApp"
-                                image={famasApp}
-                                description="FamasApp est une application de location de voiture, elle permet de lister les voitures disponibles à la location, les utilisateurs peuvent s'inscrire et réserver une voiture."
-                                listTechno={[
-                                    "ReactNative",
-                                    "ExpressJs",
-                                    "MongoDB",
-                                ]}
                             />
                         </Carrousel>
                     </div>

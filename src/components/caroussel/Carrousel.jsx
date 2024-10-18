@@ -57,7 +57,8 @@ const Carrousel = ({ children }) => {
                 right: false,
             });
         } else if (
-            currentScrollBar.scrollLeft + currentScrollBar.clientWidth >=
+            // 5 car il y a un décalage de 5px pour le scroll
+            currentScrollBar.scrollLeft + currentScrollBar.clientWidth(+5) >=
             currentScrollBar.scrollWidth
         ) {
             setDisabled({
@@ -148,14 +149,26 @@ const Carrousel = ({ children }) => {
 
     const scrollToLeftPas3 = () => {
         currentScrollBar.scroll({
-            left: currentScrollBar.scrollLeft - currentScrollBar.clientWidth,
+            left:
+                currentScrollBar.scrollLeft -
+                    (currentScrollBar.clientWidth + 5) >=
+                0
+                    ? currentScrollBar.scrollLeft -
+                      (currentScrollBar.clientWidth + 5)
+                    : 0,
             behavior: "smooth",
         });
     };
 
     const scrollToRightPas3 = () => {
         currentScrollBar.scroll({
-            left: currentScrollBar.scrollLeft + currentScrollBar.clientWidth,
+            left:
+                currentScrollBar.scrollLeft +
+                    (currentScrollBar.clientWidth + 5) <=
+                currentScrollBar.scrollWidth
+                    ? currentScrollBar.scrollLeft +
+                      (currentScrollBar.clientWidth + 5)
+                    : currentScrollBar.scrollWidth,
             behavior: "smooth",
         });
     };

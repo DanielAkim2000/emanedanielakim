@@ -30,24 +30,26 @@ const Carrousel = ({ children }) => {
     console.log(scrollInfo);
 
     const scrollToRight = () => {
+        const s = scrollInfo?.scrollWidth;
+        currentScrollBar?.scroll({
+            left: s,
+            behavior: "smooth",
+        });
         setDisabled({
             left: false,
             right: true,
         });
-        currentScrollBar?.scroll({
-            left: scrollInfo.scrollWidth,
-            behavior: "smooth",
-        });
+        console.log("scroll");
     };
 
     const scrollToLeft = () => {
-        setDisabled({
-            left: false,
-            right: true,
-        });
         currentScrollBar?.scroll({
             left: 0,
             behavior: "smooth",
+        });
+        setDisabled({
+            left: false,
+            right: true,
         });
     };
 
@@ -154,39 +156,40 @@ const Carrousel = ({ children }) => {
     }, [currentScrollBar, reload]);
 
     const scrollToLeftPas3 = () => {
+        const s =
+            currentScrollBar.scrollLeft - width >= 0
+                ? currentScrollBar.scrollLeft - width
+                : 0;
         currentScrollBar.scroll({
-            left:
-                currentScrollBar.scrollLeft - width >= 0
-                    ? currentScrollBar.scrollLeft - width
-                    : 0,
+            left: s,
             behavior: "smooth",
         });
     };
 
     const scrollToRightPas3 = () => {
+        const s =
+            currentScrollBar.scrollLeft + width <= currentScrollBar.scrollWidth
+                ? currentScrollBar.scrollLeft + width
+                : currentScrollBar.scrollWidth;
         currentScrollBar.scroll({
-            left:
-                currentScrollBar.scrollLeft + width <=
-                currentScrollBar.scrollWidth
-                    ? currentScrollBar.scrollLeft + width
-                    : currentScrollBar.scrollWidth,
+            left: s,
             behavior: "smooth",
         });
     };
 
     return (
         <>
-            <button
+            <section
                 ref={ScrollBar}
                 onScroll={handleScroll}
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseLeave}
-                className={`gap-10 flex-nowrap hide-scrollbar justify-start flex  overflow-scroll max-w-full max-sm:w-full`}
+                className={`gap-10 flex-nowrap hide-scrollbar justify-start flex  overflow-x-auto max-w-full max-sm:w-full`}
             >
                 {children}
-            </button>
+            </section>
             <div className="flex gap-3 mt-5">
                 <button
                     onClick={scrollToLeft}

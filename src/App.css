@@ -41,10 +41,7 @@
 /* Masquer la barre de défilement pour Firefox */
 .hide-scrollbar {
     scrollbar-width: none; /* Firefox */
-}
-
-.hide-scrollbar {
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    -ms-overflow-style: none; /* IE et Edge */
 }
 
 .img-akim {

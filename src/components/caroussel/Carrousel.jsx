@@ -1,6 +1,12 @@
 import Proptypes from "prop-types";
 import React, { useEffect, useRef, useState } from "react";
 
+// document.documentElement.clientWidth + 1.25rem
+let width = 0;
+if (typeof window !== "undefined") {
+    width = window.innerWidth + 20;
+}
+
 const Carrousel = ({ children }) => {
     let ScrollBar = useRef(null);
     const currentScrollBar = ScrollBar?.current;
@@ -58,7 +64,7 @@ const Carrousel = ({ children }) => {
             });
         } else if (
             // 5 car il y a un décalage de 5px pour le scroll
-            currentScrollBar.scrollLeft + currentScrollBar.clientWidth(+10) >=
+            currentScrollBar.scrollLeft + width >=
             currentScrollBar.scrollWidth
         ) {
             setDisabled({
@@ -150,11 +156,8 @@ const Carrousel = ({ children }) => {
     const scrollToLeftPas3 = () => {
         currentScrollBar.scroll({
             left:
-                currentScrollBar.scrollLeft -
-                    currentScrollBar.clientWidth(+10) >=
-                0
-                    ? currentScrollBar.scrollLeft -
-                      currentScrollBar.clientWidth(+10)
+                currentScrollBar.scrollLeft - width >= 0
+                    ? currentScrollBar.scrollLeft - width
                     : 0,
             behavior: "smooth",
         });
@@ -163,11 +166,9 @@ const Carrousel = ({ children }) => {
     const scrollToRightPas3 = () => {
         currentScrollBar.scroll({
             left:
-                currentScrollBar.scrollLeft +
-                    (currentScrollBar.clientWidth + 5) <=
+                currentScrollBar.scrollLeft + width <=
                 currentScrollBar.scrollWidth
-                    ? currentScrollBar.scrollLeft +
-                      (currentScrollBar.clientWidth + 5)
+                    ? currentScrollBar.scrollLeft + width
                     : currentScrollBar.scrollWidth,
             behavior: "smooth",
         });

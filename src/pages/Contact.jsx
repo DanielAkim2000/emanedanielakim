@@ -1,6 +1,7 @@
 import lbvimg from "@/assets/lbv.webp";
 import DivMaxWidth from "@/components/container/DivMaxWidth";
 import React from "react";
+import errorimg from "../assets/error.svg";
 import loadingimg from "../assets/loading.svg";
 import successimg from "../assets/success.svg";
 import { sendEmail } from "../utils/email";
@@ -10,7 +11,7 @@ const Contact = () => {
     const devisRef = React.useRef(null);
     const [submitInfo, setSubmitInfo] = React.useState({
         isLoading: false,
-        success: true,
+        success: false,
         error: false,
     });
     const questionsRef = React.useRef(null);
@@ -103,7 +104,7 @@ const Contact = () => {
                     success: false,
                     error: false,
                 });
-            }, 2000);
+            }, 3000);
         }
     };
 
@@ -145,13 +146,17 @@ const Contact = () => {
     if (!lbvimg) return null;
 
     return (
-        <div className="w-full flex flex-col gap-0">
+        <div className={`w-full flex flex-col gap-0 `}>
             <div className="w-full min-h-[24rem] max-h-[24rem] max-sm:max-h-[12rem] bg-akim transition ">
                 {submitInfo.success && (
-                    <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
-                        <div className="w-full max-w-[12em] min-h-[12em] justify-center bg-slate-900 p-5 rounded-lg flex flex-col items-center gap-5">
-                            <h1 className="text-xl text-left text-yellow-500 font-semibold">
-                                Message envoyé
+                    <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20 animate__animated animate__backInDown animate__delay__faster">
+                        <div
+                            className="w-[15em] min-h-[15em] justify-center  bg-slate-900  p-5 rounded-3xl flex flex-col items-center gap-5
+                            shadow-2xl border-2 border-green-500
+                        "
+                        >
+                            <h1 className="text-xl text-center text-green-500 font-semibold">
+                                Message envoyé!
                             </h1>
                             <img
                                 src={successimg}
@@ -163,7 +168,14 @@ const Contact = () => {
                 )}
                 {submitInfo.isLoading && (
                     <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
-                        <div className="w-full max-w-[12em] min-h-[12em] justify-center bg-slate-900 p-5 rounded-lg flex flex-col items-center gap-5">
+                        <div
+                            className="w-[15em] min-h-[15em] justify-center  bg-slate-900 p-5 rounded-3xl flex flex-col items-center gap-5
+                            shadow-2xl border-2 border-yellow-500 animate__animated animate__backInDown animate__delay__faster
+                        "
+                        >
+                            <h1 className="text-xl text-center text-yellow-500 font-semibold">
+                                Veuillez patienter...
+                            </h1>
                             <img
                                 src={loadingimg}
                                 alt="loading"
@@ -174,15 +186,19 @@ const Contact = () => {
                 )}
                 {submitInfo.error && (
                     <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
-                        <div className="w-full max-w-[12em] min-h-[12em] justify-center bg-slate-900 p-5 rounded-lg flex flex-col items-center gap-5">
-                            <h1 className="text-xl text-left text-red-500 font-semibold">
-                                Erreur lors de l&apos;envoi du message
+                        <div
+                            className="w-[15em] min-h-[15em] justify-center  bg-slate-900 p-5 rounded-3xl flex flex-col items-center gap-5
+                            shadow-2xl border-2 border-red-500
+                        "
+                        >
+                            <h1 className="text-xl text-center text-red-500 font-semibold">
+                                Erreur veuillez réessayer
                             </h1>
-                            <p className="text-white text-left">
-                                Une erreur s&apos;est produite lors de
-                                l&apos;envoi du message. Veuillez réessayer plus
-                                tard.
-                            </p>
+                            <img
+                                src={errorimg}
+                                className="max-w-[3em] animate__animated animate__bounceIn animate-delay-fast"
+                                alt="error"
+                            />
                         </div>
                     </div>
                 )}

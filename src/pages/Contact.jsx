@@ -6,6 +6,7 @@ import loadingimg from "../assets/loading.svg";
 import successimg from "../assets/success.svg";
 import { sendEmail } from "../utils/email";
 import { validate } from "../utils/validateForm";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Contact = () => {
     const devisRef = React.useRef(null);

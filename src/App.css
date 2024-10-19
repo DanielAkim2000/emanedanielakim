@@ -82,6 +82,14 @@ body {
     animation-delay: 0.9s;
 }
 
+.grecaptcha-badge {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    justify-content: start;
+    /* scale: 0.85; */
+}
+
 .loading-spin {
     animation: spin 2s linear infinite;
 }

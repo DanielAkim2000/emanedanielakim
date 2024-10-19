@@ -1,12 +1,12 @@
 import lbvimg from "@/assets/lbv.webp";
 import DivMaxWidth from "@/components/container/DivMaxWidth";
 import React from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import errorimg from "../assets/error.svg";
 import loadingimg from "../assets/loading.svg";
 import successimg from "../assets/success.svg";
 import { sendEmail } from "../utils/email";
 import { validate } from "../utils/validateForm";
-import ReCAPTCHA from "react-google-recaptcha";
 
 const Contact = () => {
     const devisRef = React.useRef(null);
@@ -15,6 +15,7 @@ const Contact = () => {
         success: false,
         error: false,
     });
+    const [captacha, setCaptacha] = React.useState(false);
     const questionsRef = React.useRef(null);
     const [isValid, setIsValid] = React.useState(false);
     const [reload, setReload] = React.useState(false);
@@ -44,7 +45,9 @@ const Contact = () => {
         message: "",
     });
 
-    console.log(formData);
+    const recaptchaRef = React.useRef();
+
+    console.log(captacha);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -65,8 +68,9 @@ const Contact = () => {
         );
     };
 
-    const handleClick = async () => {
+    const subtmitClick = async () => {
         if (!isValid) return;
+        if (!captacha) return;
         setSubmitInfo({
             isLoading: true,
             success: false,
@@ -92,6 +96,11 @@ const Contact = () => {
                 success: false,
                 error: true,
             });
+            setFormData({
+                name: errors.name?.error ? "" : formData.name,
+                email: errors.email?.error ? "" : formData.email,
+                message: errors.message?.error ? "" : formData.message,
+            });
         } finally {
             setTimeout(() => {
                 setSubmitInfo({
@@ -101,13 +110,45 @@ const Contact = () => {
                 });
 
                 setIsValid(false);
-
-                setFormData({
-                    name: errors.name?.error ? "" : formData.name,
-                    email: errors.email?.error ? "" : formData.email,
-                    message: errors.message?.error ? "" : formData.message,
-                });
             }, 3000);
+        }
+    };
+
+    console.log("bool", { isValid, captacha });
+
+    const handleClick = async () => {
+        const token = recaptchaRef?.current.getValue(); // Récupère le token généré quand la case est cochée
+        if (!token) {
+            recaptchaRef.current.reset();
+            alert("Veuillez vérifier le reCAPTCHA !");
+            return;
+        }
+
+        try {
+            // Tu envoies le token à Integromat avec tes données de formulaire
+            const response = await fetch(
+                "https://hook.eu2.make.com/vtoh266sekhhyx5dbh68xeabj6osmcsw",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        ...formData,
+                        recaptchaToken: token,
+                    }),
+                }
+            );
+
+            // Traiter la réponse
+            const result = await response.json();
+            if (result.success) {
+                await subtmitClick();
+            } else {
+                alert("Erreur veuillez réessayer");
+            }
+        } catch (error) {
+            console.log(error);
         }
     };
 
@@ -209,7 +250,7 @@ const Contact = () => {
             <div className="w-full bg-slate-900">
                 <DivMaxWidth>
                     <div
-                        className={`p-28 w-full bg-slate-700 max-sm:-mt-44 sm:-mt-56 max-sm:px-7 max-sm:py-10 animate__animated ${
+                        className={`p-28 w-full bg-slate-700 overflow-hidden max-sm:-mt-44 sm:-mt-56 max-sm:px-7 max-sm:py-10 animate__animated ${
                             isVisible.devis &&
                             "animate__fadeInUp animate-delay-fast"
                         } `}
@@ -247,12 +288,12 @@ const Contact = () => {
                             </p>
                         </div>
                         <div
-                            className={`w-full flex flex-row items-center gap-5 max-sm:flex-col animate__animated ${
+                            className={`w-full h-full flex flex-row items-center gap-5 max-sm:flex-col animate__animated ${
                                 isVisible.devis &&
                                 "animate__fadeInUp animate-delay-last"
                             }`}
                         >
-                            <div className="min-w-[20em] max-lg:min-w-[14em] flex flex-col justify-between gap-5 max-sm:min-w-full">
+                            <div className="min-w-[20em] max-lg:min-w-[14em] flex flex-col justify-between max-sm:min-w-full">
                                 <input
                                     type="text"
                                     name="name"
@@ -270,10 +311,17 @@ const Contact = () => {
                                     value={formData.name}
                                     onChange={handleChange}
                                 />
+                                <div className="min-h-5">
+                                    {errors.name?.error && (
+                                        <p className="text-red-500 pt-1 text-sm text-left">
+                                            *{errors.name.message}
+                                        </p>
+                                    )}
+                                </div>
                                 <input
                                     type="email"
                                     name="email"
-                                    className={`w-full h-14 p-4 border-2 bg-slate-700 rounded-lg transition-all duration-500 ease-in-out focus:outline-none
+                                    className={`w-full h-14 p-4 border-2 bg-slate-700 rounded-lg mt-3 transition-all duration-500 ease-in-out focus:outline-none
                                                 ${
                                                     errors.email?.error
                                                         ? "focus:border-red-500"
@@ -287,12 +335,19 @@ const Contact = () => {
                                     value={formData.email}
                                     onChange={handleChange}
                                 />
+                                <div className="min-h-5">
+                                    {errors.email?.error && (
+                                        <p className="text-red-500 pt-1 text-sm text-left">
+                                            *{errors.email.message}
+                                        </p>
+                                    )}
+                                </div>
                             </div>
-                            <div className="w-full flex">
+                            <div className="w-full flex flex-col">
                                 <textarea
                                     name="message"
                                     id="message"
-                                    className={`w-full min-h-32 border-2 bg-slate-700 rounded-lg p-4 transition-all duration-500 ease-in-out focus:outline-none 
+                                    className={`w-full min-h-36 border-2 bg-slate-700 rounded-lg p-4 transition-all duration-500 ease-in-out focus:outline-none 
                                             ${
                                                 errors.message?.error &&
                                                 "border-red-500"
@@ -306,7 +361,35 @@ const Contact = () => {
                                     value={formData.message}
                                     onChange={handleChange}
                                 ></textarea>
+                                <div className="min-h-5">
+                                    {errors.message?.error && (
+                                        <p className="text-red-500 pt-1 text-sm text-left">
+                                            *{errors.message.message}
+                                        </p>
+                                    )}
+                                </div>
                             </div>
+                        </div>
+                        <div
+                            className={`mt-5 flex flex-col animate__animated ${
+                                isVisible.devis &&
+                                "animate__fadeInUp animate__delay-1s"
+                            }`}
+                        >
+                            <ReCAPTCHA
+                                ref={recaptchaRef}
+                                className="w-full grecaptcha-badge"
+                                badge={"bottomleft"}
+                                sitekey="6LdMCGYqAAAAAER1gqA5hoWGYAnCFKDDBqryEKuq"
+                                onChange={() => {
+                                    setCaptacha(true);
+                                }}
+                            />
+                            {!captacha && (
+                                <p className="text-red-500 text-sm pt-1 text-left">
+                                    *Veuillez cocher la case reCAPTCHA
+                                </p>
+                            )}
                         </div>
                         <div
                             className={`w-full flex justify-start mt-9 animate__animated ${
@@ -317,12 +400,16 @@ const Contact = () => {
                             <button
                                 className={`font-semibold p-4 rounded-lg border-2 border-yellow-500
                                 transition-all duration-1000 ease-in-out ${
-                                    isValid
+                                    isValid && captacha
                                         ? "bg-yellow-500 text-slate-700"
                                         : "text-yellow-500"
                                 }`}
                                 onClick={handleClick}
-                                disabled={!isValid || submitInfo.isLoading}
+                                disabled={
+                                    !isValid ||
+                                    !captacha ||
+                                    submitInfo.isLoading
+                                }
                             >
                                 Obtenir un devis
                             </button>

@@ -63,7 +63,7 @@ body {
 .bg-akim {
     /* assets */
     background-image: url("./assets/bg2.jpg");
-    background-size: fill;
+    background-size: cover;
 }
 
 .animate-delay-slow {

@@ -83,8 +83,6 @@ body {
 }
 
 .grecaptcha-badge {
-    width: 100% !important;
-    height: 100% !important;
     display: flex;
     justify-content: start;
     /* scale: 0.85; */

@@ -142,6 +142,7 @@ const Contact = () => {
 
             // Traiter la réponse
             const result = await response.json();
+            console.log(result);
             if (result.success) {
                 await subtmitClick();
             } else {
@@ -385,9 +386,12 @@ const Contact = () => {
                                     setCaptacha(true);
                                 }}
                             />
-                            {!captacha && (
-                                <p className="text-red-500 text-sm pt-1 text-left">
-                                    *Veuillez cocher la case reCAPTCHA
+                            {!captacha && isValid && (
+                                <p
+                                    className={`text-sm pt-2 text-left text-red-500`}
+                                >
+                                    *Veuillez cocher la case ci-dessous pour
+                                    prouver que vous n&apos;êtes pas un robot.
                                 </p>
                             )}
                         </div>

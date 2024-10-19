@@ -11,7 +11,7 @@ const CardProjet = ({ image, listTechno, title, description }) => {
         <div
             ref={ref}
             className={
-                "max-sm:min-w-[22em] sm:max-w-[23em] md:max-w-[21em] lg:min-w-[23rem] md:min-w-[21rem] rounded-t-xl bg-slate-700 relative mb-2 after:border-yellow-500 after:border-b after:left-0 after:bg-yellow-500 after:absolute after:top-[" +
+                "max-sm:min-w-[20em] sm:max-w-[23em] md:max-w-[21em] lg:min-w-[23rem] md:min-w-[21rem] rounded-t-xl bg-slate-700 relative mb-2 after:border-yellow-500 after:border-b after:left-0 after:bg-yellow-500 after:absolute after:top-[" +
                 currentRef?.clientHeight +
                 "] after:transition-all after:w-full after:duration-700 after:ease-in-out hover:after:border-b-8 "
             }

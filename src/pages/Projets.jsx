@@ -3,7 +3,6 @@ import CardProjet from "@/components/card/CardProjet";
 import DivMaxWidth from "@/components/container/DivMaxWidth";
 import React, { useEffect } from "react";
 import bewvedimg from "../assets/bewved.png";
-import famasApp from "../assets/famasApp.jpg";
 import garageparrotimg from "../assets/garageparrot.png";
 import jeuxdeimg from "../assets/jeuxde.png";
 import kgbimg from "../assets/kgb.png";
@@ -75,7 +74,7 @@ const Projets = () => {
             <div className="w-full bg-slate-900">
                 <DivMaxWidth className="py-28">
                     <div
-                        className={`flex flex-row flex-wrap justify-between max-lg:justify-center gap-5 items-center w-full px-5 `}
+                        className={`flex flex-row flex-wrap justify-center  gap-5 items-center w-full px-5 `}
                     >
                         <CardProjet
                             title="Betkit"
@@ -105,7 +104,7 @@ const Projets = () => {
                         <CardProjet
                             title="KGB"
                             image={kgbimg}
-                            description="KGB est un ecf qui m'à ete donner au cours de ma formation, ce site liste les missions de l'agence KGB.Les administrateurs peuvent ajouter, modifier et supprimer des missions, des agents et des contacts etc."
+                            description="KGB est un ecf qui m'a été donné au cours de ma formation, ce site liste les missions de l'agence KGB.Les administrateurs peuvent ajouter, modifier et supprimer des missions, des agents et des contacts etc."
                             listTechno={["PHP POO", "MySQL"]}
                         />
                         <CardProjet
@@ -120,12 +119,12 @@ const Projets = () => {
                             description="C'est un jeu de dé qui permet de lancer un dé et de voir le résultat, il se joue a deux sur le même écrans, le premier joueur a atteindre les 100points à gagné la partie."
                             listTechno={["Javascript"]}
                         />
-                        <CardProjet
+                        {/* <CardProjet
                             title="FamasApp"
                             image={famasApp}
                             description="FamasApp est une application de location de voiture, elle permet de lister les voitures disponibles à la location, les utilisateurs peuvent s'inscrire et réserver une voiture."
                             listTechno={["ReactNative", "ExpressJs", "MongoDB"]}
-                        />
+                        /> */}
                     </div>
                 </DivMaxWidth>
             </div>

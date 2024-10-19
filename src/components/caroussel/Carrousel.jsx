@@ -183,7 +183,7 @@ const Carrousel = ({ children }) => {
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseLeave}
-                className={`gap-10 flex-nowrap hide-scrollbar justify-start flex  overflow-hidden max-w-full max-sm:w-full`}
+                className={`gap-10 flex-nowrap hide-scrollbar justify-start flex  overflow-scroll max-w-full max-sm:w-full`}
             >
                 {children}
             </button>
@@ -191,7 +191,7 @@ const Carrousel = ({ children }) => {
                 <button
                     onClick={scrollToLeft}
                     disabled={currentScrollBar && disabled.left}
-                    className="max-sm:hidden"
+                    className="max-lg:hidden"
                 >
                     <div
                         className={`w-10 h-2  rounded-full ${
@@ -203,7 +203,7 @@ const Carrousel = ({ children }) => {
                 </button>
                 <button
                     onClick={scrollToRight}
-                    className="max-sm:hidden"
+                    className="max-lg:hidden"
                     disabled={currentScrollBar && disabled.right}
                 >
                     <div
@@ -215,7 +215,7 @@ const Carrousel = ({ children }) => {
                 <button
                     onClick={scrollToLeftPas3}
                     disabled={currentScrollBar && disabled.left}
-                    className="sm:hidden"
+                    className="lg:hidden"
                 >
                     <div
                         className={`w-10 h-2  rounded-full ${
@@ -227,7 +227,7 @@ const Carrousel = ({ children }) => {
                 </button>
                 <button
                     onClick={scrollToRightPas3}
-                    className="sm:hidden"
+                    className="lg:hidden"
                     disabled={currentScrollBar && disabled.right}
                 >
                     <div

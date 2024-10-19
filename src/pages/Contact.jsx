@@ -69,6 +69,7 @@ const Contact = () => {
         setSubmitInfo({
             isLoading: true,
             success: false,
+            error: false,
         });
         try {
             let result = await sendEmail(formData);
@@ -78,8 +79,13 @@ const Contact = () => {
                     success: true,
                     error: false,
                 });
+                setFormData({
+                    name: "",
+                    email: "",
+                    message: "",
+                });
             }
-        } catch (error) {
+        } catch {
             setSubmitInfo({
                 isLoading: false,
                 success: false,
@@ -92,6 +98,8 @@ const Contact = () => {
                     success: false,
                     error: false,
                 });
+
+                setIsValid(false);
 
                 setFormData({
                     name: errors.name?.error ? "" : formData.name,
@@ -146,7 +154,7 @@ const Contact = () => {
                     <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
                         <div
                             className="w-[15em] min-h-[15em] justify-center  bg-slate-900  p-5 rounded-3xl flex flex-col items-center gap-5
-                            shadow-2xl border-2 border-green-500
+                            shadow-2xl border-3 border-green-500
                         "
                         >
                             <h1 className="text-xl text-center text-green-500 font-semibold">
@@ -164,7 +172,7 @@ const Contact = () => {
                     <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
                         <div
                             className="w-[15em] min-h-[15em] justify-center  bg-slate-900 p-5 rounded-3xl flex flex-col items-center gap-5
-                            shadow-2xl border-2 border-yellow-500 animate__animated animate__backInDown animate__delay__faster
+                            shadow-2xl border-3 border-yellow-500 animate__animated animate__backInDown animate__delay__faster
                         "
                         >
                             <h1 className="text-xl text-center text-yellow-500 font-semibold">
@@ -182,7 +190,7 @@ const Contact = () => {
                     <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
                         <div
                             className="w-[15em] min-h-[15em] justify-center  bg-slate-900 p-5 rounded-3xl flex flex-col items-center gap-5
-                            shadow-2xl border-2 border-red-500
+                            shadow-2xl border-3 border-red-500
                         "
                         >
                             <h1 className="text-xl text-center text-red-500 font-semibold">
@@ -313,7 +321,7 @@ const Contact = () => {
                                         : "text-yellow-500"
                                 }`}
                                 onClick={handleClick}
-                                disabled={!isValid}
+                                disabled={!isValid || submitInfo.isLoading}
                             >
                                 Obtenir un devis
                             </button>

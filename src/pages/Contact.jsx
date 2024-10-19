@@ -126,19 +126,17 @@ const Contact = () => {
 
         try {
             // Tu envoies le token à Integromat avec tes données de formulaire
-            const response = await fetch(
-                "https://hook.eu2.make.com/vtoh266sekhhyx5dbh68xeabj6osmcsw",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        ...formData,
-                        recaptchaToken: token,
-                    }),
-                }
-            );
+            const response = await fetch(import.meta.env.VITE_INTEGROMAT_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    recaptchaToken: token,
+                    secret: import.meta.env.VITE_RECAPTCHA_SECRET_KEY,
+                }),
+            });
 
             // Traiter la réponse
             const result = await response.json();
@@ -187,6 +185,8 @@ const Contact = () => {
             if (questionsCurrent) observer.unobserve(questionsCurrent);
         };
     }, []);
+
+    console.log("captcha", captacha);
 
     if (!lbvimg) return null;
 
@@ -381,9 +381,11 @@ const Contact = () => {
                                 ref={recaptchaRef}
                                 className="w-full grecaptcha-badge"
                                 badge={"bottomleft"}
-                                sitekey="6LdMCGYqAAAAAER1gqA5hoWGYAnCFKDDBqryEKuq"
+                                sitekey={
+                                    import.meta.env.VITE_RECAPTCHA_SITE_KEY
+                                }
                                 onChange={() => {
-                                    setCaptacha(true);
+                                    setCaptacha(!captacha);
                                 }}
                             />
                             {!captacha && isValid && (

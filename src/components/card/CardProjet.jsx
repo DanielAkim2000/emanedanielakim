@@ -11,7 +11,7 @@ const CardProjet = ({ image, listTechno, title, description }) => {
         <div
             ref={ref}
             className={
-                "max-sm:min-w-[20em] sm:max-w-[23em] md:max-w-[21em] lg:min-w-[23rem] md:min-w-[21rem] rounded-t-xl bg-slate-700 relative mb-2 after:border-yellow-500 after:border-b after:left-0 after:bg-yellow-500 after:absolute after:top-[" +
+                "max-sm:min-w-[20em] sm:max-w-[21em] sm:min-w-[21em] md:max-w-[21em] lg:min-w-[23rem] md:min-w-[23em] rounded-t-xl bg-slate-700 relative mb-2 after:border-yellow-500 after:border-b after:left-0 after:bg-yellow-500 after:absolute after:top-[" +
                 currentRef?.clientHeight +
                 "] after:transition-all after:w-full after:duration-700 after:ease-in-out hover:after:border-b-8 "
             }
@@ -23,7 +23,7 @@ const CardProjet = ({ image, listTechno, title, description }) => {
                     alt="image4"
                 />
             </div>
-            <div className="p-7 text-start min-h-[22em] max-h-[22em] max-md:min-h-[20em] max-md:max-h-[20em] flex flex-col">
+            <div className="p-7 text-start min-h-[22em] max-h-[22em]  max-sm:min-h-[21em] max-sm:max-h-[21em] flex flex-col">
                 <p className="text-yellow-500 font-semibold text-sm">
                     {listTechno.reduce((acc, t) => {
                         return acc + ", " + t;

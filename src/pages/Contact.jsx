@@ -86,23 +86,17 @@ const Contact = () => {
                 error: true,
             });
         } finally {
-            setFormData({
-                name: "",
-                email: "",
-                message: "",
-            });
-
-            setFormData({
-                name: errors.name?.error ? "" : formData.name,
-                email: errors.email?.error ? "" : formData.email,
-                message: errors.message?.error ? "" : formData.message,
-            });
-
             setTimeout(() => {
                 setSubmitInfo({
                     isLoading: false,
                     success: false,
                     error: false,
+                });
+
+                setFormData({
+                    name: errors.name?.error ? "" : formData.name,
+                    email: errors.email?.error ? "" : formData.email,
+                    message: errors.message?.error ? "" : formData.message,
                 });
             }, 3000);
         }

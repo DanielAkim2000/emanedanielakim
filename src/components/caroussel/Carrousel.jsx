@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 // document.documentElement.clientWidth + 1.25rem
 let width = 0;
 if (typeof window !== "undefined") {
-    width = window.innerWidth - 6 * 0.98;
+    width = window.innerWidth - 6;
 }
 
 const Carrousel = ({ children }) => {

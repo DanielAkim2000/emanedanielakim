@@ -77,7 +77,7 @@ const Projet = () => {
             </DivMaxWidth>
             <div className="w-full bg-slate-900 py-28">
                 <DivMaxWidth className={"flex flex-col"}>
-                    <div className="w-full flex flex-row justify-between items-center ">
+                    <div className="w-full flex flex-row justify-between items-center max-md:flex-col max-md:gap-10 ">
                         <div>
                             <h1 className="text-4xl playfair">
                                 {projet?.subtitle}
@@ -111,15 +111,15 @@ const Projet = () => {
                             </button>
                         )}
                     </div>
-                    <div className="w-full flex flex-row justify-between font-normal items-center mt-10 text-left text-lg gap-10">
+                    <div className="w-full flex flex-row justify-between font-normal items-center mt-10 text-left text-lg gap-10 max-md:flex-col">
                         <p>{projet?.textBottom1}</p>
                         <p>{projet?.textBottom2}</p>
                     </div>
-                    <div className="flex flex-row mt-10  w-full gap-10">
+                    <div className="flex flex-row mt-10  w-full gap-10 max-md:flex-col">
                         <div className="w-full overflow-hidden rounded-xl">
                             <img
                                 src={projet?.image[0]}
-                                className="w-full transition duration-500 ease-in-out hover:scale-125 hover:opacity-80"
+                                className="w-full transition rounded-xl duration-500 ease-in-out hover:scale-125 hover:opacity-80"
                                 alt="projet"
                             />
                         </div>
@@ -132,7 +132,7 @@ const Projet = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="flex flex-row mt-10  w-full gap-10">
+                    <div className="flex flex-row mt-10  w-full gap-10 max-md:flex-col">
                         <div className="w-full text-left">
                             <h2 className="text-2xl playfair">
                                 {projet?.blocks.block2.title}
@@ -144,16 +144,16 @@ const Projet = () => {
                         <div className="w-full overflow-hidden rounded-xl">
                             <img
                                 src={projet?.image[1]}
-                                className=" w-full transition duration-500 ease-in-out hover:scale-125 hover:opacity-80"
+                                className=" w-full transition rounded-xl duration-500 ease-in-out hover:scale-125 hover:opacity-80"
                                 alt="projet"
                             />
                         </div>
                     </div>
-                    <div className="flex flex-row mt-10  w-full gap-10">
+                    <div className="flex flex-row mt-10  w-full gap-10 max-md:flex-col">
                         <div className="w-full overflow-hidden rounded-xl ">
                             <img
                                 src={projet?.image[2]}
-                                className="w-full transition duration-500 ease-in-out hover:scale-125 hover:opacity-80"
+                                className="w-full transition rounded-xl duration-500 ease-in-out hover:scale-125 hover:opacity-80"
                                 alt="projet"
                             />
                         </div>

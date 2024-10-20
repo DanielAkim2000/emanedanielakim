@@ -5,7 +5,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import errorimg from "../assets/error.svg";
 import loadingimg from "../assets/loading.svg";
 import successimg from "../assets/success.svg";
-import { sendEmail } from "../utils/email";
+import { sendEmail } from "../services/email";
 import { validate } from "../utils/validateForm";
 
 const Contact = () => {
@@ -35,7 +35,7 @@ const Contact = () => {
     });
 
     const [isVisible, setIsVisible] = React.useState({
-        devis: false,
+        devis: true,
         questions: false,
     });
 
@@ -174,7 +174,7 @@ const Contact = () => {
                     }
                 });
             },
-            { threshold: 0.1 }
+            { threshold: 0.05 }
         );
 
         if (devisRef.current) observer.observe(devisRef.current);
@@ -191,8 +191,15 @@ const Contact = () => {
     if (!lbvimg) return null;
 
     return (
-        <div className={`w-full flex flex-col gap-0 `}>
-            <div className="w-full min-h-[24rem] max-h-[24rem] max-sm:max-h-[12rem] bg-akim transition ">
+        <div
+            className={`w-full flex flex-col gap-0 `}
+            style={{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${lbvimg})`,
+                backgroundSize: "cover",
+                backgroundAttachment: "fixed",
+            }}
+        >
+            <div className="w-full min-h-[24rem] max-h-[24rem] max-sm:max-h-[12rem] transition ">
                 {submitInfo.success && (
                     <div className="w-full h-screen flex items-center justify-center backdrop-blur-lg fixed z-20">
                         <div
@@ -452,25 +459,40 @@ const Contact = () => {
                             ref={questionsRef}
                             id="questions"
                         >
-                            <div
-                                className={`flex flex-col gap-10 animate__animated ${
-                                    isVisible.questions &&
-                                    "animate__fadeInUp animate-delay-medium"
-                                }`}
-                            >
+                            <div className={`flex flex-col gap-10 `}>
                                 <div className="text-left">
-                                    <h1 className="mb-3 text-3xl playfair max-sm:text-2xl">
+                                    <h1
+                                        className={`mb-3 text-3xl playfair max-sm:text-2xl animate__animated ${
+                                            isVisible.questions &&
+                                            "animate__fadeInUp animate-delay-medium"
+                                        }`}
+                                    >
                                         Quels sont vos disponibilités ?
                                     </h1>
-                                    <p className="md:text-lg">
+                                    <p
+                                        className={`md:text-lg animate__animated ${
+                                            isVisible.questions &&
+                                            "animate__fadeInUp animate-delay-medium"
+                                        }`}
+                                    >
                                         Je suis actuellement disponible
                                     </p>
                                 </div>
                                 <div className="text-left">
-                                    <h1 className="mb-3 text-3xl playfair max-sm:text-2xl">
+                                    <h1
+                                        className={`mb-3 text-3xl playfair max-sm:text-2xl animate__animated ${
+                                            isVisible.questions &&
+                                            "animate__fadeInUp animate-delay-medium"
+                                        }`}
+                                    >
                                         Quels sont vos tarifs ?
                                     </h1>
-                                    <p className="md:text-lg">
+                                    <p
+                                        className={`md:text-lg animate__animated ${
+                                            isVisible.questions &&
+                                            "animate__fadeInUp animate-delay-medium"
+                                        }`}
+                                    >
                                         La tarification dépend du projet et
                                         surtout du temps qui sera nécessaire
                                         pour le mener à bien. À titre indicatif
@@ -481,20 +503,40 @@ const Contact = () => {
                                     </p>
                                 </div>
                                 <div className="text-left">
-                                    <h1 className="mb-3 text-3xl playfair max-sm:text-2xl">
+                                    <h1
+                                        className={`mb-3 text-3xl playfair max-sm:text-2xl animate__animated ${
+                                            isVisible.questions &&
+                                            "animate__fadeInUp animate-delay-medium"
+                                        }`}
+                                    >
                                         Effectuez-vous des missions en Agence ?
                                     </h1>
-                                    <p className="md:text-lg">
+                                    <p
+                                        className={`md:text-lg animate__animated ${
+                                            isVisible.questions &&
+                                            "animate__fadeInUp animate-delay-medium"
+                                        }`}
+                                    >
                                         J&apos;effectue l&apos;ensemble de mes
                                         missions à distance.
                                     </p>
                                 </div>
                                 <div className="text-left">
-                                    <h1 className="mb-3 text-3xl playfair max-sm:text-2xl">
+                                    <h1
+                                        className={`mb-3 text-3xl playfair max-sm:text-2xl animate__animated ${
+                                            isVisible.questions &&
+                                            "animate__fadeInUp animate-delay-medium"
+                                        }`}
+                                    >
                                         Faites-vous la partie design des
                                         projets?
                                     </h1>
-                                    <p className="md:text-lg">
+                                    <p
+                                        className={`md:text-lg animate__animated ${
+                                            isVisible.questions &&
+                                            "animate__fadeInUp animate-delay-medium"
+                                        }`}
+                                    >
                                         Je ne suis malheureusement pas en
                                         capacité d&apos;effectuer le design
                                         d&apos;une application aussi il sera

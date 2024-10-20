@@ -19,7 +19,7 @@ const Header = () => {
     };
 
     return (
-        <header className="absolute w-full py-3">
+        <header className="absolute w-full py-3 z-50">
             <DivMaxWidth className="flex flex-col w-full">
                 <nav className="flex justify-between items-center pb-4">
                     <button
@@ -50,7 +50,7 @@ const Header = () => {
                         <li className="ml-4">
                             <button
                                 onClick={goToContact}
-                                className="border-2 px-5 py-3 rounded-lg uppercase font-semibold  text-sm border-yellow-500 transition-all duration-500 ease-in-out  hover:bg-yellow-500 hover:text-[#213547]"
+                                className="border-2 px-5 py-3 rounded-lg uppercase font-semibold  text-sm border-yellow-500 transition-all duration-500 ease-in-out  hover:bg-yellow-500 hover:text-slate-700"
                             >
                                 me contacter
                             </button>

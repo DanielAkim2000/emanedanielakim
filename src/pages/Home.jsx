@@ -1,8 +1,3 @@
-import betkit3 from "@/assets/betkit2.png";
-import bewvedimg from "@/assets/bewved.png";
-import garageparrotimg from "@/assets/garageparrot.png";
-import jeuxdeimg from "@/assets/jeuxde.png";
-import kgbimg from "@/assets/kgb.png";
 import Myimg from "@/assets/Subject.png";
 import CardCompétences from "@/components/card/CardCompétences";
 import DivMaxWidth from "@/components/container/DivMaxWidth";
@@ -12,17 +7,18 @@ import elementorimg from "@/assets/elementor.svg";
 import expressimg from "@/assets/express.svg";
 import nextimg from "@/assets/next.svg";
 import nodeimg from "@/assets/nodejs.svg";
-import pobaluimg from "@/assets/pobalu.png";
 import reactimg from "@/assets/react.svg";
 import symfonyimg from "@/assets/symfony.svg";
 import tailwindimg from "@/assets/tailwind.svg";
 import wordpressimg from "@/assets/wordpress.svg";
 import CardProjet from "@/components/card/CardProjet";
 import Carrousel from "@/components/caroussel/Carrousel";
+import { useProjetContext } from "../hooks/useProjetContext";
 
 const Home = () => {
     const competenceRef = React.useRef(null);
     const projetsRef = React.useRef(null);
+    const { projets } = useProjetContext();
 
     const [reload, setReload] = React.useState(false);
     // const [loading, setLoading] = React.useState(true);
@@ -60,7 +56,7 @@ const Home = () => {
                         }));
                     }
                 },
-                { threshold: 0.6 }
+                { threshold: 0.3 }
             );
         });
 
@@ -102,7 +98,7 @@ const Home = () => {
                     </div>
                 </div>
             </DivMaxWidth>
-            <div className="w-full bg-slate-700">
+            <div className="w-full bg-slate-700 flex justify-center">
                 <DivMaxWidth className="py-28 text-left">
                     <div className="mb-10" ref={competenceRef} id="competence">
                         <p
@@ -180,54 +176,13 @@ const Home = () => {
                     <div
                         className={`animate__animated ${
                             isVisible.projets &&
-                            "animate__fadeInUp animate-delay-slow"
+                            "animate__fadeInUp animate-delay-fast"
                         }`}
                     >
                         <Carrousel>
-                            <CardProjet
-                                title="Betkit"
-                                image={betkit3}
-                                description="
-                                Betkit est un outil qui permet de générez les nombres de combinaisons et côtes possibles pour un ensemble de matchs de football , basket-ball, tennis et rugby sélectionnés.
-                            "
-                                listTechno={["React", "Tailwind"]}
-                            />
-                            <CardProjet
-                                title="Bewved"
-                                image={bewvedimg}
-                                description="Bewved est un site pour des formateurs qui listerons leurs formations et les apprenants pourrons s'inscrire à ces formations."
-                                listTechno={[
-                                    "React",
-                                    "Symfony",
-                                    "MySQL",
-                                    "Bootstrap",
-                                ]}
-                            />
-                            <CardProjet
-                                title="Garage V Parrot"
-                                image={garageparrotimg}
-                                description="C'est un site vitrine pour un garage automobile, il permet de présenter les services et les produits du garage."
-                                listTechno={["React", "Symfony", "PostegreSQL"]}
-                            />
-                            <CardProjet
-                                title="Pobalu"
-                                image={pobaluimg}
-                                description="Pobalu est un site vitrine pour l'artiste Pierre Olivier qui lui permet de présenter ses différentes séries de peintures."
-                                listTechno={["Wordpress", "Elementor"]}
-                            />
-                            <CardProjet
-                                title="KGB"
-                                image={kgbimg}
-                                description="KGB est un ecf qui m'à ete donner au cours de ma formation, ce site liste les missions de l'agence KGB.Les administrateurs peuvent ajouter, modifier et supprimer des missions, des agents et des contacts etc."
-                                listTechno={["PHP POO", "MySQL"]}
-                            />
-
-                            <CardProjet
-                                title="Jeux de dé"
-                                image={jeuxdeimg}
-                                description="C'est un jeu de dé qui permet de lancer un dé et de voir le résultat, il se joue a deux sur le même écrans, le premier joueur a atteindre les 100points à gagné la partie."
-                                listTechno={["Javascript"]}
-                            />
+                            {projets?.map((projet) => (
+                                <CardProjet key={projet.id} projet={projet} />
+                            ))}
                         </Carrousel>
                     </div>
 

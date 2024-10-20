@@ -12,18 +12,18 @@ const CardCompétences = ({ images, title, description }) => {
         >
             <div className="inline-flex mb-7 gap-3  max-sm:justify-start ">
                 <img
-                    src={images.image1}
+                    src={images[0]}
                     className="max-sm:w-[3.4em] sm:w-[5vw] md:w-[3em]"
                     alt="image1"
                 />
                 <img
-                    src={images.image2}
+                    src={images[1]}
                     className="max-sm:w-[3.4em] sm:w-[5vw] md:w-[3em]"
                     alt="image2"
                 />
-                {images.image3 && (
+                {images[3] && (
                     <img
-                        src={images.image3}
+                        src={images[3]}
                         className="max-sm:w-[3.4em] sm:w-[5vw] md:w-[3em]"
                         alt="image3"
                     />

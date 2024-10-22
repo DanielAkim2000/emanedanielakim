@@ -81,65 +81,65 @@ const Carrousel = ({ children }) => {
         }
     };
 
-    const handleMouseDown = (event) => {
-        const element = currentScrollBar;
-        setIsDragging(true); // Détecte que l'utilisateur a cliqué
-        setStartX(event.clientX - element?.offsetLeft); // Position de départ du clic
-        setScrollLeft(element?.scrollLeft); // Enregistre la position du scroll actuel
-    };
+    // const handleMouseDown = (event) => {
+    //     const element = currentScrollBar;
+    //     setIsDragging(true); // Détecte que l'utilisateur a cliqué
+    //     setStartX(event.clientX - element?.offsetLeft); // Position de départ du clic
+    //     setScrollLeft(element?.scrollLeft); // Enregistre la position du scroll actuel
+    // };
 
-    const handleMouseMove = (event) => {
-        if (!isDragging) return; // Ne fait rien si on ne glisse pas
-        event.preventDefault(); // Empêche les comportements par défaut comme le texte sélectionné
-        const element = currentScrollBar;
-        const x = event.clientX - element.offsetLeft;
-        const walk = x - startX;
-        console.log(scrollLeft, "left");
-        element.scrollLeft = scrollLeft - walk; // Met à jour la position de scroll
-    };
+    // const handleMouseMove = (event) => {
+    //     if (!isDragging) return; // Ne fait rien si on ne glisse pas
+    //     event.preventDefault(); // Empêche les comportements par défaut comme le texte sélectionné
+    //     const element = currentScrollBar;
+    //     const x = event.clientX - element.offsetLeft;
+    //     const walk = x - startX;
+    //     console.log(scrollLeft, "left");
+    //     element.scrollLeft = scrollLeft - walk; // Met à jour la position de scroll
+    // };
 
-    const handleMouseUp = () => {
-        if (
-            scrollLeft + currentScrollBar?.clientWidth ===
-            currentScrollBar?.scrollWidth // Si on est à la fin
-        ) {
-            if (
-                currentScrollBar.scrollLeft <
-                currentScrollBar.scrollWidth -
-                    currentScrollBar.clientWidth -
-                    200
-            ) {
-                currentScrollBar.scroll({
-                    left: 0,
-                    behavior: "smooth",
-                });
-            } else {
-                currentScrollBar.scroll({
-                    left: currentScrollBar.scrollWidth,
-                    behavior: "smooth",
-                });
-            }
-        }
+    // const handleMouseUp = () => {
+    //     if (
+    //         scrollLeft + currentScrollBar?.clientWidth ===
+    //         currentScrollBar?.scrollWidth // Si on est à la fin
+    //     ) {
+    //         if (
+    //             currentScrollBar.scrollLeft <
+    //             currentScrollBar.scrollWidth -
+    //                 currentScrollBar.clientWidth -
+    //                 200
+    //         ) {
+    //             currentScrollBar.scroll({
+    //                 left: 0,
+    //                 behavior: "smooth",
+    //             });
+    //         } else {
+    //             currentScrollBar.scroll({
+    //                 left: currentScrollBar.scrollWidth,
+    //                 behavior: "smooth",
+    //             });
+    //         }
+    //     }
 
-        if (scrollLeft === 0) {
-            if (currentScrollBar?.scrollLeft > 250) {
-                currentScrollBar.scroll({
-                    left: currentScrollBar.scrollWidth,
-                    behavior: "smooth",
-                });
-            } else {
-                currentScrollBar.scroll({
-                    left: 0,
-                    behavior: "smooth",
-                });
-            }
-        }
-        setIsDragging(false); // Arrête le glissement
-    };
+    //     if (scrollLeft === 0) {
+    //         if (currentScrollBar?.scrollLeft > 250) {
+    //             currentScrollBar.scroll({
+    //                 left: currentScrollBar.scrollWidth,
+    //                 behavior: "smooth",
+    //             });
+    //         } else {
+    //             currentScrollBar.scroll({
+    //                 left: 0,
+    //                 behavior: "smooth",
+    //             });
+    //         }
+    //     }
+    //     setIsDragging(false); // Arrête le glissement
+    // };
 
-    const handleMouseLeave = () => {
-        setIsDragging(false); // Arrête le glissement si la souris quitte l'élément
-    };
+    // const handleMouseLeave = () => {
+    //     setIsDragging(false); // Arrête le glissement si la souris quitte l'élément
+    // };
 
     //UseEffect pour mettre a jour les informations de scroll au chargement de la page
     useEffect(() => {
@@ -182,10 +182,10 @@ const Carrousel = ({ children }) => {
             <section
                 ref={ScrollBar}
                 onScroll={handleScroll}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseLeave}
+                // onMouseDown={handleMouseDown}
+                // onMouseMove={handleMouseMove}
+                // onMouseUp={handleMouseUp}
+                // onMouseLeave={handleMouseLeave}
                 className={`gap-10 flex-nowrap hide-scrollbar justify-start flex  overflow-x-auto max-w-full max-sm:w-full`}
             >
                 {children}

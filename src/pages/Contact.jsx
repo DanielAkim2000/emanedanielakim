@@ -120,7 +120,7 @@ const Contact = () => {
         const token = recaptchaRef?.current.getValue(); // Récupère le token généré quand la case est cochée
         if (!token) {
             recaptchaRef.current.reset();
-            alert("Veuillez vérifier le reCAPTCHA !");
+            // alert("Veuillez vérifier le reCAPTCHA !");
             return;
         }
 
@@ -144,7 +144,7 @@ const Contact = () => {
             if (result.success) {
                 await subtmitClick();
             } else {
-                alert("Erreur veuillez réessayer");
+                // alert("Erreur veuillez réessayer");
             }
         } catch (error) {
             console.log(error);

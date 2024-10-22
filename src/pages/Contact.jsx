@@ -34,6 +34,8 @@ const Contact = () => {
         },
     });
 
+    const [isClicked, setIsClicked] = React.useState(false);
+
     const [isVisible, setIsVisible] = React.useState({
         devis: true,
         questions: false,
@@ -112,6 +114,7 @@ const Contact = () => {
                 setCaptacha(false);
                 recaptchaRef.current.reset();
                 setIsValid(false);
+                setIsClicked(false);
             }, 3000);
         }
     };
@@ -147,6 +150,7 @@ const Contact = () => {
                 await subtmitClick();
             } else {
                 // alert("Erreur veuillez réessayer");
+                console.log("Erreur veuillez réessayer");
             }
         } catch (error) {
             console.log(error);
@@ -396,20 +400,33 @@ const Contact = () => {
                             } `}
                         >
                             <button
-                                className={`font-semibold p-4 rounded-lg border-2 border-yellow-500
-                                transition-all duration-1000 ease-in-out ${
-                                    isValid && captacha
-                                        ? "bg-yellow-500 text-slate-700"
-                                        : "text-yellow-500"
-                                }`}
-                                onClick={handleClick}
+                                className={`font-semibold p-4 rounded-lg border-2 border-yellow-500 relative overflow-hidden
+                                transition-all duration-500 ease-in-out before:absolute before:left-0 before:top-0 before:w-0 before:h-full
+                              before:bg-slate-700 t ${
+                                  isValid && captacha
+                                      ? "bg-yellow-500 text-slate-700"
+                                      : "text-yellow-500"
+                              } ${
+                                    isClicked &&
+                                    "before:w-full before:transition-all before:duration-500 before:ease-in-out"
+                                } `}
+                                onClick={() => {
+                                    setIsClicked(true);
+                                    handleClick();
+                                }}
                                 disabled={
                                     !isValid ||
                                     !captacha ||
                                     submitInfo.isLoading
                                 }
                             >
-                                Obtenir un devis
+                                <span
+                                    className={`z-20 relative ${
+                                        isClicked && "text-yellow-500"
+                                    }`}
+                                >
+                                    Obtenir un devis
+                                </span>
                             </button>
                         </div>
                     </div>

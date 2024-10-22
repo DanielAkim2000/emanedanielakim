@@ -201,7 +201,7 @@ const ProjetProvider = ({ children }) => {
                     text: "Les joueurs peuvent suivre le déroulement des parties, voir l'évolution du score et relancer une nouvelle partie une fois le jeu terminé.",
                 },
             },
-            link: "https:danielakim2000.github.io/jeuavecjs/",
+            link: "https://danielakim2000.github.io/jeuxavecjs/",
         },
     ]);
     // Liste des projets

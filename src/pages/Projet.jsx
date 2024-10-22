@@ -92,7 +92,12 @@ const Projet = () => {
                                 onMouseOver={() => setIsHover(true)}
                                 onFocus={() => setIsHover(true)}
                                 onMouseLeave={() => setIsHover(false)}
-                                onClick={() => window.open(projet.link)}
+                                onClick={() =>
+                                    setTimeout(
+                                        () => window.open(projet.link),
+                                        700
+                                    )
+                                }
                                 className={`bg-slate-900 font-semibold border-2 text-yellow-500
                         justify-between
                         mt-auto

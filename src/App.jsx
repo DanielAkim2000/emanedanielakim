@@ -6,10 +6,12 @@ import Projet from "@/pages/Projet";
 import Projets from "@/pages/Projets";
 import "animate.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
     return (
         <Router>
+            <ScrollToTop />
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />

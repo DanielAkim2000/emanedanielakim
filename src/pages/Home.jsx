@@ -57,6 +57,10 @@ const Home = () => {
     });
 
     React.useEffect(() => {
+        document.title = "Emane Daniel";
+    }, []);
+
+    React.useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {

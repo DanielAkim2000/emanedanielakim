@@ -16,6 +16,10 @@ const Projet = () => {
     const [isHover, setIsHover] = React.useState(false);
 
     React.useEffect(() => {
+        document.title = projet?.title;
+    }, [projet]);
+
+    React.useEffect(() => {
         if (!projetRef) {
             setReload(!reload);
         }

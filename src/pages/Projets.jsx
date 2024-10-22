@@ -20,6 +20,10 @@ const Projets = () => {
     }, [reload]);
 
     useEffect(() => {
+        document.title = "Mes projets";
+    }, []);
+
+    useEffect(() => {
         let projetCurrent = projetRef?.current;
         let cardsCurrent = cardsRef?.current;
         const observer = new IntersectionObserver((entries) => {

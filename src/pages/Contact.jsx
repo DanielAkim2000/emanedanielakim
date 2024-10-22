@@ -161,6 +161,10 @@ const Contact = () => {
     // console.log(errors);
 
     React.useEffect(() => {
+        document.title = "Me contacter";
+    }, []);
+
+    React.useEffect(() => {
         if (!devisRef || !questionsRef) {
             setReload(!reload);
         }

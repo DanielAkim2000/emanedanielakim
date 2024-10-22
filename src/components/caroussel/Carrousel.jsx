@@ -1,5 +1,5 @@
 import Proptypes from "prop-types";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 // document.documentElement.clientWidth + 1.25rem
 let width = 0;
@@ -23,9 +23,9 @@ const Carrousel = ({ children }) => {
         clientWidth: currentScrollBar?.clientWidth,
     });
 
-    const [isDragging, setIsDragging] = useState(false);
-    const [startX, setStartX] = useState(0); // Position initiale du clic
-    const [scrollLeft, setScrollLeft] = useState(0); // Position initiale du scroll
+    // const [isDragging, setIsDragging] = useState(false);
+    // const [startX, setStartX] = useState(0); // Position initiale du clic
+    // const [scrollLeft, setScrollLeft] = useState(0); // Position initiale du scroll
 
     console.log(scrollInfo);
 
@@ -140,6 +140,22 @@ const Carrousel = ({ children }) => {
     // const handleMouseLeave = () => {
     //     setIsDragging(false); // Arrête le glissement si la souris quitte l'élément
     // };
+    // const autoScroll = () => {
+    //     if (
+    //         currentScrollBar.scrollLeft + currentScrollBar.clientWidth >=
+    //         currentScrollBar.scrollWidth
+    //     ) {
+    //         currentScrollBar.scroll({
+    //             left: 0,
+    //             behavior: "auto",
+    //         });
+    //     } else {
+    //         currentScrollBar.scroll({
+    //             left: currentScrollBar.scrollLeft + 5,
+    //             behavior: "smooth",
+    //         });
+    //     }
+    // };
 
     //UseEffect pour mettre a jour les informations de scroll au chargement de la page
     useEffect(() => {
@@ -186,7 +202,7 @@ const Carrousel = ({ children }) => {
                 // onMouseMove={handleMouseMove}
                 // onMouseUp={handleMouseUp}
                 // onMouseLeave={handleMouseLeave}
-                className={`gap-10 flex-nowrap hide-scrollbar justify-start flex  overflow-x-auto max-w-full max-sm:w-full`}
+                className={`gap-10 flex-nowrap hide-scrollbar justify-start flex  overflow-x-auto max-w-full max-sm:w-full max-sm:gap-5`}
             >
                 {children}
             </section>

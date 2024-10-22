@@ -51,7 +51,7 @@ const Footer = () => {
                     <p
                         className={`text-lg text-yellow-500 font-semibold animate__animated ${
                             isVisible.reseaux &&
-                            " animate__fadeInUp  animate-delay-fast"
+                            " animate__fadeInUp  animate__delay_faster"
                         }`}
                     >
                         Réseaux sociaux
@@ -59,7 +59,7 @@ const Footer = () => {
                     <h2
                         className={`text-4xl text-white font-serif font-semibold animate__animated ${
                             isVisible.reseaux &&
-                            "animate__fadeInUp animate-delay-medium"
+                            "animate__fadeInUp animate-delay-fast"
                         }`}
                     >
                         Me retrouver
@@ -68,7 +68,7 @@ const Footer = () => {
                 <div
                     className={`w-full justify-between gap-10 flex max-sm:flex-col animate__animated ${
                         isVisible.reseaux &&
-                        "animate__fadeInUp animate-delay-slow"
+                        "animate__fadeInUp animate-delay-fast"
                     }`}
                 >
                     <BtnReseauxSociaux

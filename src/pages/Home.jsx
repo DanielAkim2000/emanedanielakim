@@ -147,7 +147,7 @@ const Home = () => {
                     <div
                         className={`flex flex-row justify-between gap-10 max-sm:flex-col animate__animated ${
                             isVisible.competence &&
-                            "animate__fadeInUp animate-delay-slow"
+                            "animate__fadeInUp animate-delay-fast"
                         }`}
                     >
                         {renderSkills()}
@@ -177,7 +177,7 @@ const Home = () => {
                     <div
                         className={`animate__animated ${
                             isVisible.projets &&
-                            "animate__fadeInUp animate-delay-slow"
+                            "animate__fadeInUp animate-delay-fast"
                         }`}
                     >
                         <Carrousel>

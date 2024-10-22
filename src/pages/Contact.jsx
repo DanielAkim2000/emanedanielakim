@@ -291,7 +291,7 @@ const Contact = () => {
                         <div
                             className={`w-full h-full flex flex-row items-center gap-5 max-sm:flex-col animate__animated ${
                                 isVisible.devis &&
-                                "animate__fadeInUp animate-delay-last"
+                                "animate__fadeInUp animate-delay-slow"
                             }`}
                         >
                             <div className="min-w-[20em] max-lg:min-w-[14em] flex flex-col justify-between max-sm:min-w-full">
@@ -400,7 +400,7 @@ const Contact = () => {
                         <div
                             className={`w-full flex justify-start mt-9 animate__animated ${
                                 isVisible.devis &&
-                                "animate__fadeInUp animate-delay-last"
+                                "animate__fadeInUp animate__delay-1s"
                             } `}
                         >
                             <button

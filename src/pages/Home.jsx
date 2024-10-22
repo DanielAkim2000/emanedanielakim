@@ -33,7 +33,7 @@ const skillsData = [
             "Je crée des API RESTful sécurisées et performantes pour vos applications web.",
     },
     {
-        images: [images.next, images.tailwind, images.react],
+        images: [images.next, images.react],
         title: "Front-end ReactJs et NextJs",
         description:
             "Grâce à ReactJs et NextJs, je crée des interfaces utilisateur modernes et réactives.",

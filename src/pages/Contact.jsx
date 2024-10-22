@@ -16,7 +16,6 @@ const Contact = () => {
         error: false,
     });
     const [captacha, setCaptacha] = React.useState(false);
-    const questionsRef = React.useRef(null);
     const [isValid, setIsValid] = React.useState(false);
     const [reload, setReload] = React.useState(false);
     const [errors, setErrors] = React.useState({
@@ -165,14 +164,14 @@ const Contact = () => {
     }, []);
 
     React.useEffect(() => {
-        if (!devisRef || !questionsRef) {
+        if (!devisRef) {
             setReload(!reload);
         }
     }, [reload]);
 
     React.useEffect(() => {
         let devisCurrent = devisRef?.current;
-        let questionsCurrent = questionsRef?.current;
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -188,11 +187,9 @@ const Contact = () => {
         );
 
         if (devisRef.current) observer.observe(devisRef.current);
-        if (questionsRef.current) observer.observe(questionsRef.current);
 
         return () => {
             if (devisCurrent) observer.unobserve(devisCurrent);
-            if (questionsCurrent) observer.unobserve(questionsCurrent);
         };
     }, []);
 

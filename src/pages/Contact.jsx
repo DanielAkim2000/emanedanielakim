@@ -460,45 +460,25 @@ const Contact = () => {
                                 </div>
                             </div>
                         </div>
-                        <div
-                            className="w-full"
-                            ref={questionsRef}
-                            id="questions"
-                        >
+                        <div className="w-full" id="questions">
                             <div className={`flex flex-col gap-10 `}>
                                 <div className="text-left">
                                     <h1
-                                        className={`mb-3 text-3xl playfair max-sm:text-2xl animate__animated ${
-                                            isVisible.questions &&
-                                            "animate__fadeInUp animate-delay-medium"
-                                        }`}
+                                        className={`mb-3 text-3xl playfair max-sm:text-2xl`}
                                     >
                                         Quels sont vos disponibilités ?
                                     </h1>
-                                    <p
-                                        className={`md:text-lg animate__animated ${
-                                            isVisible.questions &&
-                                            "animate__fadeInUp animate-delay-medium"
-                                        }`}
-                                    >
+                                    <p className={`md:text-lg `}>
                                         Je suis actuellement disponible
                                     </p>
                                 </div>
                                 <div className="text-left">
                                     <h1
-                                        className={`mb-3 text-3xl playfair max-sm:text-2xl animate__animated ${
-                                            isVisible.questions &&
-                                            "animate__fadeInUp animate-delay-medium"
-                                        }`}
+                                        className={`mb-3 text-3xl playfair max-sm:text-2xl `}
                                     >
                                         Quels sont vos tarifs ?
                                     </h1>
-                                    <p
-                                        className={`md:text-lg animate__animated ${
-                                            isVisible.questions &&
-                                            "animate__fadeInUp animate-delay-medium"
-                                        }`}
-                                    >
+                                    <p className={`md:text-lg `}>
                                         La tarification dépend du projet et
                                         surtout du temps qui sera nécessaire
                                         pour le mener à bien. À titre indicatif
@@ -510,39 +490,23 @@ const Contact = () => {
                                 </div>
                                 <div className="text-left">
                                     <h1
-                                        className={`mb-3 text-3xl playfair max-sm:text-2xl animate__animated ${
-                                            isVisible.questions &&
-                                            "animate__fadeInUp animate-delay-medium"
-                                        }`}
+                                        className={`mb-3 text-3xl playfair max-sm:text-2xl `}
                                     >
                                         Effectuez-vous des missions en Agence ?
                                     </h1>
-                                    <p
-                                        className={`md:text-lg animate__animated ${
-                                            isVisible.questions &&
-                                            "animate__fadeInUp animate-delay-medium"
-                                        }`}
-                                    >
+                                    <p className={`md:text-lg `}>
                                         J&apos;effectue l&apos;ensemble de mes
                                         missions à distance.
                                     </p>
                                 </div>
                                 <div className="text-left">
                                     <h1
-                                        className={`mb-3 text-3xl playfair max-sm:text-2xl animate__animated ${
-                                            isVisible.questions &&
-                                            "animate__fadeInUp animate-delay-medium"
-                                        }`}
+                                        className={`mb-3 text-3xl playfair max-sm:text-2xl `}
                                     >
                                         Faites-vous la partie design des
                                         projets?
                                     </h1>
-                                    <p
-                                        className={`md:text-lg animate__animated ${
-                                            isVisible.questions &&
-                                            "animate__fadeInUp animate-delay-medium"
-                                        }`}
-                                    >
+                                    <p className={`md:text-lg `}>
                                         Je ne suis malheureusement pas en
                                         capacité d&apos;effectuer le design
                                         d&apos;une application aussi il sera

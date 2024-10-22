@@ -108,7 +108,9 @@ const Contact = () => {
                     success: false,
                     error: false,
                 });
-
+                // on reset le captcha a la fin
+                setCaptacha(false);
+                recaptchaRef.current.reset();
                 setIsValid(false);
             }, 3000);
         }

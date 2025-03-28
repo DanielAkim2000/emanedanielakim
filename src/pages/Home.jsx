@@ -47,7 +47,6 @@ const skillsData = [
 ];
 
 const Home = () => {
-  const [skills, setSkills] = React.useState(skillsData);
   const competenceRef = React.useRef(null);
   const projetsRef = React.useRef(null);
   const { projets } = useProjetContext();

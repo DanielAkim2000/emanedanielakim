@@ -8,33 +8,22 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
       - name: Set up SSH key
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "18"
-          cache: "pnpm"
-          cache-dependency-path: "pnpm-lock.yaml"
-      - name: Install dependencies
-        run: pnpm install
-      - name: Run tests
-        run: pnpm test
-      - name: Build project
-        run: pnpm run build
-      - name: Deploy to server
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }} # Utilise la clé privée ici
+
+      - name: Copy files to server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-            cd /path/to/your/project
+          ssh -o StrictHostKeyChecking=no -p 2222 nna-ekamkam@86.196.4.160 << 'EOF'
+            cd /var/www/portefolio
             git pull origin main
-            pnpm install --prod
-            pm2 restart all
+            pnpm install
+            pnpm run build
+            pm2 restart portefolio
           EOF

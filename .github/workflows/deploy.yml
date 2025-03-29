@@ -17,6 +17,12 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Install pnpm
+        run: |
+          curl -fsSL https://get.pnpm.io/install.sh | sh -
+          export PATH=$HOME/.local/share/pnpm:$PATH
+
       - name: Copy files to server
         run: |
           ssh -o StrictHostKeyChecking=no -p 2222 nna-ekamkam@86.196.4.160 << 'EOF'

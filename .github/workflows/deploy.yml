@@ -22,6 +22,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -p 2222 nna-ekamkam@86.196.4.160 << 'EOF'
             cd /var/www/portefolio
+            which pnpm || npm install -g pnpm
             git pull origin main
             pnpm install
             pnpm run build

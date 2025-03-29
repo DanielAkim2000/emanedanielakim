@@ -47,7 +47,6 @@ const skillsData = [
 ];
 
 const Home = () => {
-  const [skills, setSkills] = React.useState(skillsData);
   const competenceRef = React.useRef(null);
   const projetsRef = React.useRef(null);
   const { projets } = useProjetContext();
@@ -159,7 +158,7 @@ const Home = () => {
                 isVisible.projets && "animate__fadeInUp animate-delay-fast"
               }`}
             >
-              Mes differents
+              Mes différents
             </p>
             <h2
               className={`text-4xl text-white font-serif font-semibold animate__animated ${

@@ -16,7 +16,12 @@ jobs:
       - name: Set up SSH key
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }} # Utilise la clé privée ici
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Install pnpm (if not installed)
+        run: |
+          curl -fsSL https://get.pnpm.io/install.sh | sh -
+          export PATH=$HOME/.local/share/pnpm:$PATH  # Assure-toi que pnpm est dans ton PATH
 
       - name: Copy files to server
         run: |
@@ -25,5 +30,4 @@ jobs:
             git pull origin main
             pnpm install
             pnpm run build
-            pm2 restart portefolio
           EOF

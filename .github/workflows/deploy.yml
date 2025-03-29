@@ -12,6 +12,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+      - name: Log SSH private key (for debugging purposes)
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" # Affiche la clé privée dans les logs
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Set up SSH key
         uses: webfactory/ssh-agent@v0.5.3
         with:
